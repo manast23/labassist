@@ -1,0 +1,383 @@
+[
+  {
+    "id": "cbc",
+    "panel_name": "Complete Blood Count (CBC)",
+    "tests": [
+      {
+        "id": "hb",
+        "name": "Hemoglobin",
+        "units": "g/dL",
+        "normal_range": "Male: 13.5-17.5, Female: 12-15.5",
+        "low_causes": "Anemia (blood loss, iron deficiency, chronic disease, renal disease)",
+        "high_causes": "Polycythemia (dehydration, chronic hypoxia, polycythemia vera)"
+      },
+      {
+        "id": "wbc",
+        "name": "White Blood Cells",
+        "units": "×10⁹/L",
+        "normal_range": "4.0-11.0",
+        "low_causes": "Bone marrow suppression, viral infections, autoimmune disorders",
+        "high_causes": "Infection, inflammation, leukemia, corticosteroid use"
+      },
+      {
+        "id": "plt",
+        "name": "Platelet Count",
+        "units": "×10⁹/L",
+        "normal_range": "150-450",
+        "low_causes": "Bone marrow suppression, viral infection, sepsis, DIC, drugs (e.g. heparin)",
+        "high_causes": "Reactive thrombocytosis (inflammation, iron deficiency), myeloproliferative disorder"
+      },
+      {
+        "id": "rbc",
+        "name": "Red Blood Cells",
+        "units": "×10¹²/L",
+        "normal_range": "Male: 4.5-5.9, Female: 4.1-5.1",
+        "low_causes": "Anemia of any cause",
+        "high_causes": "Polycythemia, dehydration, chronic hypoxia"
+      },
+      {
+        "id": "hct",
+        "name": "Hematocrit (PCV)",
+        "units": "%",
+        "normal_range": "Male: 41-53, Female: 36-46",
+        "low_causes": "Anemia, overhydration",
+        "high_causes": "Dehydration, polycythemia"
+      },
+      {
+        "id": "mcv",
+        "name": "Mean Corpuscular Volume (MCV)",
+        "units": "fL",
+        "normal_range": "80-96",
+        "low_causes": "Microcytic anemia (iron deficiency, thalassemia)",
+        "high_causes": "Macrocytic anemia (B12 or folate deficiency, liver disease)"
+      },
+      {
+        "id": "mch",
+        "name": "Mean Corpuscular Hemoglobin (MCH)",
+        "units": "pg",
+        "normal_range": "27-33",
+        "low_causes": "Hypochromic anemia (iron deficiency, thalassemia)",
+        "high_causes": "Macrocytosis, spherocytosis"
+      },
+      {
+        "id": "mchc",
+        "name": "Mean Corpuscular Hemoglobin Concentration (MCHC)",
+        "units": "g/dL",
+        "normal_range": "32-36",
+        "low_causes": "Hypochromic anemia",
+        "high_causes": "Spherocytosis, hemoconcentration"
+      },
+      {
+        "id": "rdw",
+        "name": "Red Cell Distribution Width (RDW)",
+        "units": "%",
+        "normal_range": "11.5-14.5",
+        "low_causes": "Uniform RBC size (rarely significant)",
+        "high_causes": "Mixed anemia (iron + B12 deficiency), evolving anemia"
+      }
+    ]
+  },
+  {
+    "id": "lft",
+    "panel_name": "Liver Function Tests (LFT)",
+    "tests": [
+      {
+        "id": "alt",
+        "name": "ALT (SGPT)",
+        "units": "U/L",
+        "normal_range": "7-56",
+        "low_causes": "Normal or vitamin B6 deficiency",
+        "high_causes": "Liver injury (viral hepatitis, fatty liver, drugs)"
+      },
+      {
+        "id": "ast",
+        "name": "AST (SGOT)",
+        "units": "U/L",
+        "normal_range": "10-40",
+        "low_causes": "Normal finding",
+        "high_causes": "Liver injury, myocardial infarction, muscle damage"
+      },
+      {
+        "id": "alp",
+        "name": "Alkaline Phosphatase (ALP)",
+        "units": "U/L",
+        "normal_range": "44-147",
+        "low_causes": "Malnutrition, hypothyroidism",
+        "high_causes": "Cholestasis, bone disease, pregnancy"
+      },
+      {
+        "id": "tbil",
+        "name": "Total Bilirubin",
+        "units": "mg/dL",
+        "normal_range": "0.3-1.2",
+        "low_causes": "Not clinically significant",
+        "high_causes": "Hemolysis, liver dysfunction, bile duct obstruction"
+      },
+      {
+        "id": "alb",
+        "name": "Albumin",
+        "units": "g/dL",
+        "normal_range": "3.5-5.0",
+        "low_causes": "Liver disease, nephrotic syndrome, malnutrition",
+        "high_causes": "Dehydration"
+      }
+    ]
+  },
+  {
+  "id": "rft",
+  "panel_name": "Renal Function Tests (RFT)",
+  "tests": [
+    {
+      "id": "urea",
+      "name": "Blood Urea",
+      "units": "mg/dL",
+      "normal_range": "7-20",
+      "low_causes": "Liver failure, overhydration, malnutrition",
+      "high_causes": "Renal dysfunction, dehydration, high protein diet"
+    },
+    {
+      "id": "creatinine",
+      "name": "Serum Creatinine",
+      "units": "mg/dL",
+      "normal_range": "Male: 0.74-1.35, Female: 0.59-1.04",
+      "low_causes": "Low muscle mass, pregnancy",
+      "high_causes": "Renal failure, dehydration, muscle injury"
+    },
+    {
+      "id": "na",
+      "name": "Sodium (Na⁺)",
+      "units": "mmol/L",
+      "normal_range": "135-145",
+      "low_causes": "Hyponatremia (SIADH, diuretics, heart failure)",
+      "high_causes": "Hypernatremia (dehydration, diabetes insipidus)"
+    },
+    {
+      "id": "k",
+      "name": "Potassium (K⁺)",
+      "units": "mmol/L",
+      "normal_range": "3.5-5.0",
+      "low_causes": "Vomiting, diarrhea, diuretics, Cushing’s",
+      "high_causes": "Renal failure, ACE inhibitors, acidosis"
+    },
+    {
+      "id": "cl",
+      "name": "Chloride (Cl⁻)",
+      "units": "mmol/L",
+      "normal_range": "98-107",
+      "low_causes": "Hypochloremia (vomiting, metabolic alkalosis, SIADH)",
+      "high_causes": "Hyperchloremia (dehydration, metabolic acidosis, renal tubular acidosis)"
+    }
+  ]
+},
+  {
+    "id": "tft",
+    "panel_name": "Thyroid Function Tests (TFT)",
+    "tests": [
+      {
+        "id": "tsh",
+        "name": "TSH",
+        "units": "mIU/L",
+        "normal_range": "0.4-4.5",
+        "low_causes": "Hyperthyroidism, pituitary dysfunction",
+        "high_causes": "Primary hypothyroidism, thyroiditis"
+      },
+      {
+        "id": "t3",
+        "name": "Free T3",
+        "units": "pg/mL",
+        "normal_range": "2.3-4.2",
+        "low_causes": "Hypothyroidism, euthyroid sick syndrome",
+        "high_causes": "Hyperthyroidism"
+      },
+      {
+        "id": "t4",
+        "name": "Free T4",
+        "units": "ng/dL",
+        "normal_range": "0.8-1.8",
+        "low_causes": "Hypothyroidism, pituitary disease",
+        "high_causes": "Hyperthyroidism, T4 therapy"
+      }
+    ]
+  },
+  {
+    "id": "abg",
+    "panel_name": "Arterial Blood Gas (ABG)",
+    "tests": [
+      {
+        "id": "ph",
+        "name": "pH",
+        "units": "",
+        "normal_range": "7.35-7.45",
+        "low_causes": "Acidosis (metabolic or respiratory)",
+        "high_causes": "Alkalosis (metabolic or respiratory)"
+      },
+      {
+        "id": "pco2",
+        "name": "pCO₂",
+        "units": "mmHg",
+        "normal_range": "35-45",
+        "low_causes": "Hyperventilation (respiratory alkalosis)",
+        "high_causes": "Hypoventilation (respiratory acidosis)"
+      },
+      {
+        "id": "hco3",
+        "name": "HCO₃⁻",
+        "units": "mmol/L",
+        "normal_range": "22-26",
+        "low_causes": "Metabolic acidosis",
+        "high_causes": "Metabolic alkalosis"
+      },
+      {
+        "id": "po2",
+        "name": "pO₂",
+        "units": "mmHg",
+        "normal_range": "80-100",
+        "low_causes": "Hypoxemia (COPD, PE, pneumonia, ARDS)",
+        "high_causes": "Oxygen therapy, hyperventilation"
+      },
+      {
+        "id": "o2sat",
+        "name": "O₂ Saturation",
+        "units": "%",
+        "normal_range": "95-100",
+        "low_causes": "Hypoxia, anemia, lung disease",
+        "high_causes": "Supplemental oxygen"
+      }
+    ]
+  },
+  {
+  "id": "urine_re",
+  "panel_name": "Urine Routine Examination (R/E)",
+  "tests": [
+    {
+      "id": "color",
+      "name": "Color",
+      "units": "",
+      "normal_range": "Pale yellow to amber",
+      "low_causes": "-",
+      "high_causes": "Dark yellow (dehydration), red (hematuria), brown (bilirubinuria)"
+    },
+    {
+      "id": "appearance",
+      "name": "Appearance",
+      "units": "",
+      "normal_range": "Clear",
+      "low_causes": "-",
+      "high_causes": "Turbid (infection, pus cells, crystals)"
+    },
+    {
+      "id": "specific_gravity",
+      "name": "Specific Gravity",
+      "units": "",
+      "normal_range": "1.005–1.030",
+      "low_causes": "Dilute urine (diabetes insipidus, overhydration)",
+      "high_causes": "Concentrated urine (dehydration, glycosuria, proteinuria)"
+    },
+    {
+      "id": "ph",
+      "name": "pH",
+      "units": "",
+      "normal_range": "4.5–8.0",
+      "low_causes": "High-protein diet, acidosis",
+      "high_causes": "Vegetarian diet, urinary tract infection"
+    },
+    {
+      "id": "protein",
+      "name": "Protein",
+      "units": "",
+      "normal_range": "Negative",
+      "low_causes": "-",
+      "high_causes": "Proteinuria (nephrotic syndrome, glomerulonephritis)"
+    },
+    {
+      "id": "glucose",
+      "name": "Glucose",
+      "units": "",
+      "normal_range": "Negative",
+      "low_causes": "-",
+      "high_causes": "Glycosuria (diabetes mellitus)"
+    },
+    {
+      "id": "ketones",
+      "name": "Ketones",
+      "units": "",
+      "normal_range": "Negative",
+      "low_causes": "-",
+      "high_causes": "Ketonuria (diabetic ketoacidosis, starvation)"
+    },
+    {
+      "id": "bilirubin",
+      "name": "Bilirubin",
+      "units": "",
+      "normal_range": "Negative",
+      "low_causes": "-",
+      "high_causes": "Bilirubinuria (liver disease, biliary obstruction)"
+    },
+    {
+      "id": "urobilinogen",
+      "name": "Urobilinogen",
+      "units": "EU/dL",
+      "normal_range": "0.1–1.0",
+      "low_causes": "Antibiotic use, bile duct obstruction",
+      "high_causes": "Hemolysis, liver disease"
+    },
+    {
+      "id": "rbc",
+      "name": "RBCs",
+      "units": "cells/HPF",
+      "normal_range": "0–3",
+      "low_causes": "-",
+      "high_causes": "Hematuria (stones, infection, trauma)"
+    },
+    {
+      "id": "wbc",
+      "name": "WBCs",
+      "units": "cells/HPF",
+      "normal_range": "0–5",
+      "low_causes": "-",
+      "high_causes": "Pyuria (infection, inflammation)"
+    },
+    {
+      "id": "pus_cells",
+      "name": "Pus Cells",
+      "units": "cells/HPF",
+      "normal_range": "0–5",
+      "low_causes": "-",
+      "high_causes": "Pyuria (infection, urinary tract infection)"
+    },
+    {
+      "id": "casts",
+      "name": "Casts",
+      "units": "",
+      "normal_range": "Absent",
+      "low_causes": "-",
+      "high_causes": "Hyaline, granular, or RBC casts (renal disease)"
+    },
+    {
+      "id": "crystals",
+      "name": "Crystals",
+      "units": "",
+      "normal_range": "Absent or few",
+      "low_causes": "-",
+      "high_causes": "Uric acid, oxalate, or phosphate crystals (stone risk)"
+    },
+    {
+      "id": "bacteria",
+      "name": "Bacteria",
+      "units": "",
+      "normal_range": "Absent",
+      "low_causes": "-",
+      "high_causes": "Bacteriuria (urinary tract infection)"
+    },
+    {
+      "id": "epithelial_cells",
+      "name": "Epithelial Cells",
+      "units": "cells/HPF",
+      "normal_range": "Few",
+      "low_causes": "-",
+      "high_causes": "Contamination, infection, tubular damage"
+    }
+  ]
+}
+]
+
