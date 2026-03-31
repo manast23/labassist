@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lab Dashboard — Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <script>
+    // === Apply saved theme BEFORE render ===
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body?.classList.add('light');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">LabAssist — Clinical Dashboard</div>
+      <button id="themeToggle" class="btn-ghost" title="Toggle light/dark mode">🌙</button>
+    </header>
+
+    <main class="main">
+      <section class="card">
+        <h2>Select a panel</h2>
+        <p class="muted">Type to filter or scroll. Select a panel, enter age & gender, then Search.</p>
+
+        <form action="{{ url_for('panel') }}" method="post" id="searchForm">
+          <div class="field">
+            <input id="searchInput" name="lab_id" class="input" placeholder="Search panels (e.g., CBC, RFT)..." autocomplete="off" required>
+            <div id="dropdown" class="dropdown"></div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label class="label">Age</label>
+              <input type="number" name="age" min="0" class="input" placeholder="Years">
+            </div>
+            <div class="col">
+              <label class="label">Gender</label>
+              <select name="gender" class="input">
+                <option value="">Any</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn" type="submit">Search Panel</button>
+        </form>
+
+        {% if error %}
+          <div class="alert error">{{ error }}</div>
+        {% endif %}
+      </section>
+
+      <footer class="footer">© {{ current_year }} LabAssist</footer>
+    </main>
+  </div>
+
+  <script>
+    // === THEME TOGGLE ===
+    const toggleBtn = document.getElementById("themeToggle");
+    const body = document.body;
+    const savedTheme = localStorage.getItem("theme");
+
+    // Initialize state correctly
+    if (savedTheme === "light") {
+      body.classList.add("light");
+      toggleBtn.textContent = "☀️";
+    } else {
+      toggleBtn.textContent = "🌙";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("light");
+      const theme = body.classList.contains("light") ? "light" : "dark";
+      localStorage.setItem("theme", theme);
+      toggleBtn.textContent = theme === "light" ? "☀️" : "🌙";
+    });
+
+    // === DROPDOWN ===
+    const labs = [
+      {% for l in labs %}
+        { id: "{{ l.id }}", name: "{{ l.panel_name }}" }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ];
+
+    const input = document.getElementById('searchInput');
+    const dropdown = document.getElementById('dropdown');
+
+    function showDropdown(filter="") {
+      dropdown.innerHTML = "";
+      const f = filter.trim().toLowerCase();
+      const filtered = labs.filter(l => l.name.toLowerCase().includes(f) || l.id.toLowerCase().includes(f));
+      if (filtered.length === 0) {
+        dropdown.innerHTML = '<div class="dd-item muted">No panels found</div>';
+        dropdown.style.display = "block";
+        return;
+      }
+      filtered.forEach(item => {
+        const d = document.createElement('div');
+        d.className = 'dd-item';
+        d.textContent = item.name + " (" + item.id.toUpperCase() + ")";
+        d.dataset.id = item.id;
+        d.onclick = () => {
+          input.value = item.id;
+          dropdown.style.display = 'none';
+        };
+        dropdown.appendChild(d);
+      });
+      dropdown.style.display = "block";
+    }
+
+    input.addEventListener('focus', () => showDropdown(''));
+    input.addEventListener('input', (e) => showDropdown(e.target.value));
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.field')) dropdown.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
