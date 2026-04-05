@@ -64,12 +64,50 @@ def normalize(text):
     return re.sub(r"[^a-z0-9]", "", text.lower())
 
 
+EXTRA_ALIASES = {
+    "wbc":        ["white blood cell", "white blood", "wbc", "leukocyte", "tlc"],
+    "rbc":        ["red blood cell", "red blood", "rbc", "erythrocyte"],
+    "hb":         ["hemoglobin", "haemoglobin", "hgb", "hb"],
+    "hct":        ["hematocrit", "haematocrit", "pcv", "hct", "packed cell"],
+    "mcv":        ["mean corpuscular volume", "mcv"],
+    "mch":        ["mean corpuscular hemoglobin", "mch"],
+    "mchc":       ["mean corpuscular hemoglobin concentration", "mchc"],
+    "rdw":        ["red cell distribution", "rdw"],
+    "plt":        ["platelet", "thrombocyte", "plt"],
+    "alt":        ["alt", "sgpt", "alanine"],
+    "ast":        ["ast", "sgot", "aspartate"],
+    "alp":        ["alkaline phosphatase", "alp"],
+    "tbil":       ["total bilirubin", "bilirubin"],
+    "alb":        ["albumin", "alb"],
+    "urea":       ["urea", "bun", "blood urea"],
+    "creatinine": ["creatinine", "creat"],
+    "na":         ["sodium", "na"],
+    "k":          ["potassium"],
+    "cl":         ["chloride"],
+    "tsh":        ["tsh", "thyroid stimulating"],
+    "t3":         ["free t3", "ft3"],
+    "t4":         ["free t4", "ft4"],
+    "ph":         ["ph"],
+    "pco2":       ["pco2", "partial pressure co"],
+    "hco3":       ["hco3", "bicarbonate"],
+    "po2":        ["po2", "partial pressure o"],
+    "o2sat":      ["o2 sat", "spo2", "oxygen sat"],
+    "glucose":    ["glucose", "blood sugar", "fbs", "rbs"],
+    "protein":    ["protein"],
+    "ketones":    ["ketone"],
+    "urobilinogen": ["urobilinogen"],
+    "specific_gravity": ["specific gravity", "sp gr"],
+}
+
+
 def extract_values(text, lab):
     extracted = {}
     lines = text.replace("\r", "\n").split("\n")
     aliases = {}
     for test in lab["tests"]:
         tid = test["id"]
+        for kw in EXTRA_ALIASES.get(tid, []):
+            aliases[normalize(kw)] = tid
         aliases[normalize(test["name"])] = tid
         aliases[normalize(tid)] = tid
         words = test["name"].split()
@@ -77,13 +115,16 @@ def extract_values(text, lab):
             aliases[normalize("".join(w[0] for w in words))] = tid
     for line in lines:
         line_norm = normalize(line)
-        for alias, tid in aliases.items():
+        for alias in sorted(aliases.keys(), key=len, reverse=True):
             if alias in line_norm:
+                tid = aliases[alias]
+                if tid in extracted:
+                    break
                 nums = re.findall(r"\b\d+\.?\d*\b", line)
                 if nums:
                     for n in nums:
                         val = float(n)
-                        if val < 100000:
+                        if 0 < val < 100000:
                             extracted[tid] = str(val)
                             break
                 break
