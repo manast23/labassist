@@ -204,7 +204,8 @@
             ocrStatus.textContent = `✅ ${filled} value(s) filled automatically. Please verify before interpreting.`;
           } else {
             ocrStatus.className = "ocr-status error";
-            ocrStatus.textContent = "⚠️ Report scanned but no matching values found. Please enter values manually.";
+            const preview = data.raw_text ? data.raw_text.substring(0, 200) : "empty";
+            ocrStatus.textContent = `⚠️ Scanned but no values matched. OCR read: "${preview}"`;
           }
         }
       } catch (err) {
