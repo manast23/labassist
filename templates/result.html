@@ -5,16 +5,53 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ lab.panel_name }} — Results</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
-  <!-- Apply saved theme instantly before page renders -->
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') {
-        document.documentElement.classList.add('light');
-      }
+      if (savedTheme === 'light') document.documentElement.classList.add('light');
     })();
   </script>
+  <style>
+    .ocr-box {
+      background: var(--glass);
+      border: 1px dashed rgba(61,211,255,0.25);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+    .ocr-box h3 { margin: 0 0 6px 0; font-size: 1rem; color: var(--accent); }
+    .ocr-box p  { margin: 0 0 12px 0; font-size: 0.88rem; color: var(--muted); }
+    .ocr-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .ocr-status { font-size: 0.88rem; color: var(--muted); margin-top: 8px; min-height: 20px; }
+    .ocr-status.success { color: var(--success); }
+    .ocr-status.error   { color: var(--danger);  }
+    .btn-ocr {
+      padding: 9px 18px;
+      background: linear-gradient(90deg, #1a8a6e, #3dd3a0);
+      color: #02111d;
+      font-weight: 700;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: opacity 0.2s;
+    }
+    .btn-ocr:disabled { opacity: 0.5; cursor: not-allowed; }
+    .file-label {
+      display: inline-block;
+      padding: 9px 16px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .file-label:hover { border-color: var(--accent); color: var(--accent); }
+    #fileInput { display: none; }
+    .filled-by-ocr { border-color: var(--accent) !important; background: rgba(61,211,255,0.06) !important; }
+  </style>
 </head>
 <body>
   <div class="wrap">
@@ -30,7 +67,20 @@
           <div class="meta">Panel ID: <b>{{ lab.id }}</b></div>
         </div>
 
-        <form action="{{ url_for('interpret') }}" method="post">
+        <!-- ── OCR Upload Box ── -->
+        <div class="ocr-box">
+          <h3>📷 Upload Report Image</h3>
+          <p>Take a photo or upload a PDF/image of your lab report — values will be filled automatically.</p>
+          <div class="ocr-row">
+            <label class="file-label" for="fileInput">📂 Choose file</label>
+            <input type="file" id="fileInput" accept="image/*,.pdf">
+            <span id="fileName" style="font-size:0.85rem;color:var(--muted)">No file chosen</span>
+            <button class="btn-ocr" id="ocrBtn" disabled>Scan Report</button>
+          </div>
+          <div class="ocr-status" id="ocrStatus"></div>
+        </div>
+
+        <form action="{{ url_for('interpret') }}" method="post" id="mainForm">
           <input type="hidden" name="lab_id" value="{{ lab.id }}">
 
           <div class="row">
@@ -53,37 +103,36 @@
             <div class="test-card">
               <div class="test-title">{{ test.name }}</div>
               <div class="test-units">{{ test.units }}</div>
-              <input class="input" name="{{ test.id }}" placeholder="Enter value">
+              <input class="input" name="{{ test.id }}" id="field_{{ test.id }}" placeholder="Enter value">
               <div class="range">Normal: <span class="muted">{{ test.normal_range }}</span></div>
             </div>
             {% endfor %}
           </div>
 
           <div style="text-align:center; margin-top:18px;">
-            <button class="btn">Interpret</button>
+            <button class="btn" type="submit">Interpret</button>
             <a href="{{ url_for('index') }}" class="btn btn-ghost">Back</a>
           </div>
         </form>
 
         {% if interpretations %}
-          <section class="results">
-            <h3>Interpretation</h3>
-            <div class="grid-results">
-              {% for it in interpretations %}
-                <div class="result-box {% if it.status=='Low' %}low{% elif it.status=='High' %}high{% else %}normal{% endif %}">
-                  <div class="result-name">{{ it.name }}</div>
-                  <div class="result-val">{{ it.value if it.value is not none else "-" }} {{ it.units }}</div>
-                  <div class="result-range">Normal: {{ it.normal_range }}</div>
-                  <div class="result-note">{% if it.detail %}{{ it.detail }}{% endif %}</div>
-                </div>
-              {% endfor %}
+        <section class="results">
+          <h3>Interpretation</h3>
+          <div class="grid-results">
+            {% for it in interpretations %}
+            <div class="result-box {% if it.status=='Low' %}low{% elif it.status=='High' %}high{% else %}normal{% endif %}">
+              <div class="result-name">{{ it.name }}</div>
+              <div class="result-val">{{ it.value if it.value is not none else "-" }} {{ it.units }}</div>
+              <div class="result-range">Normal: {{ it.normal_range }}</div>
+              <div class="result-note">{% if it.detail %}{{ it.detail }}{% endif %}</div>
             </div>
-
-            <div class="interpretation">
-              <h4>Clinical Summary</h4>
-              <p>{{ summary }}</p>
-            </div>
-          </section>
+            {% endfor %}
+          </div>
+          <div class="interpretation">
+            <h4>Clinical Summary</h4>
+            <p>{{ summary }}</p>
+          </div>
+        </section>
         {% endif %}
       </section>
 
@@ -92,18 +141,79 @@
   </div>
 
   <script>
-    // === THEME TOGGLE ===
+    // Theme toggle
     const toggleBtn = document.getElementById("themeToggle");
     const isLight = document.documentElement.classList.contains("light");
-
-    // Set correct initial icon
     toggleBtn.textContent = isLight ? "☀️" : "🌙";
-
     toggleBtn.addEventListener("click", () => {
       document.documentElement.classList.toggle("light");
       const theme = document.documentElement.classList.contains("light") ? "light" : "dark";
       localStorage.setItem("theme", theme);
       toggleBtn.textContent = theme === "light" ? "☀️" : "🌙";
+    });
+
+    // OCR
+    const fileInput = document.getElementById("fileInput");
+    const fileLabel = document.getElementById("fileName");
+    const ocrBtn   = document.getElementById("ocrBtn");
+    const ocrStatus = document.getElementById("ocrStatus");
+
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length > 0) {
+        fileLabel.textContent = fileInput.files[0].name;
+        ocrBtn.disabled = false;
+      } else {
+        fileLabel.textContent = "No file chosen";
+        ocrBtn.disabled = true;
+      }
+    });
+
+    ocrBtn.addEventListener("click", async () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      ocrBtn.disabled = true;
+      ocrBtn.textContent = "Scanning...";
+      ocrStatus.className = "ocr-status";
+      ocrStatus.textContent = "⏳ Sending to OCR — this may take a few seconds...";
+
+      const formData = new FormData();
+      formData.append("report", file);
+      formData.append("lab_id", "{{ lab.id }}");
+
+      try {
+        const resp = await fetch("/ocr", { method: "POST", body: formData });
+        const data = await resp.json();
+
+        if (data.error) {
+          ocrStatus.className = "ocr-status error";
+          ocrStatus.textContent = "❌ " + data.error;
+        } else {
+          const extracted = data.extracted;
+          let filled = 0;
+          for (const [tid, val] of Object.entries(extracted)) {
+            const field = document.getElementById("field_" + tid);
+            if (field) {
+              field.value = val;
+              field.classList.add("filled-by-ocr");
+              filled++;
+            }
+          }
+          if (filled > 0) {
+            ocrStatus.className = "ocr-status success";
+            ocrStatus.textContent = `✅ ${filled} value(s) filled automatically. Please verify before interpreting.`;
+          } else {
+            ocrStatus.className = "ocr-status error";
+            ocrStatus.textContent = "⚠️ Report scanned but no matching values found. Please enter values manually.";
+          }
+        }
+      } catch (err) {
+        ocrStatus.className = "ocr-status error";
+        ocrStatus.textContent = "❌ Network error. Please try again.";
+      }
+
+      ocrBtn.disabled = false;
+      ocrBtn.textContent = "Scan Report";
     });
   </script>
 </body>
