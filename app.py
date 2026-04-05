@@ -39,7 +39,7 @@ def ocr():
                 "isOverlayRequired": False,
                 "detectOrientation": True,
                 "scale": True,
-                "OCREngine": 2,
+                "OCREngine": 1,
             },
             timeout=30,
         )
@@ -57,7 +57,7 @@ def ocr():
 
     full_text = " ".join(p.get("ParsedText", "") for p in parsed)
     extracted = extract_values(full_text, lab)
-    return jsonify({"extracted": extracted, "raw_text": full_text})
+    return jsonify({"extracted": extracted, "raw_text": full_text, "line_count": len(full_text.split("\n"))})
 
 
 def normalize(text):
