@@ -3,8 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LabAssist — Lab Report Interpreter</title>
-  <meta name="description" content="Understand your lab reports instantly. Enter your values and get a clear clinical summary.">
+
+  <!-- SEO: Title & Description -->
+  <title>LabAssist — Free Lab Report Interpreter | Understand Your Blood Test Results</title>
+  <meta name="description" content="Understand your blood test and lab report results instantly. Enter your CBC, LFT, RFT, TFT, ABG or Urine R/E values and get a clear plain-language clinical summary. Free, private, no signup.">
+
+  <!-- SEO: Canonical URL -->
+  <link rel="canonical" href="https://labassist-75wq.onrender.com/">
+
+  <!-- SEO: Open Graph (for sharing on WhatsApp, Facebook etc) -->
+  <meta property="og:title" content="LabAssist — Understand Your Lab Report Instantly">
+  <meta property="og:description" content="Free tool to interpret blood test results. CBC, LFT, RFT, TFT, ABG, Urine R/E. Plain language summaries, no signup needed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://labassist-75wq.onrender.com/">
+
+  <!-- SEO: Structured Data (WebApplication schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "LabAssist",
+    "description": "Free lab report interpreter. Understand your blood test results with plain-language clinical summaries.",
+    "url": "https://labassist-75wq.onrender.com",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- SEO: FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I understand my blood test results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Select your lab panel (CBC, LFT, RFT etc), enter your test values, and LabAssist will show you which values are normal, low, or high with a plain-language clinical summary."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What lab panels does LabAssist support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LabAssist supports Complete Blood Count (CBC), Liver Function Tests (LFT), Renal Function Tests (RFT), Thyroid Function Tests (TFT), Arterial Blood Gas (ABG), and Urine Routine Examination."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is LabAssist free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, LabAssist is completely free. No signup or account required. Your data is never stored."
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -54,7 +118,6 @@
         <p class="muted" style="margin-top:4px;margin-bottom:18px;">Search by panel name or short code, enter your age and gender, then proceed.</p>
 
         <form action="{{ url_for('panel') }}" method="post" id="searchForm">
-
           <label class="label">Panel</label>
           <div class="field">
             <input id="searchInput" name="lab_id" class="input"
@@ -95,11 +158,35 @@
         </div>
       </section>
 
+      <!-- SEO: FAQ section (visible content Google can index) -->
+      <section class="card" style="max-width:680px;">
+        <h2 style="margin-bottom:16px;">Frequently Asked Questions</h2>
+
+        <div style="margin-bottom:16px;">
+          <h3 style="font-size:0.97rem;font-weight:600;color:var(--navy);margin-bottom:4px;">How do I understand my blood test results?</h3>
+          <p class="muted">Select your lab panel, enter the values from your report, and LabAssist will instantly tell you which values are normal, low, or high — with a plain-language clinical summary.</p>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div style="margin-bottom:16px;">
+          <h3 style="font-size:0.97rem;font-weight:600;color:var(--navy);margin-bottom:4px;">What panels are supported?</h3>
+          <p class="muted">Complete Blood Count (CBC), Liver Function Tests (LFT), Renal Function Tests (RFT), Thyroid Function Tests (TFT), Arterial Blood Gas (ABG), and Urine Routine Examination (R/E).</p>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div>
+          <h3 style="font-size:0.97rem;font-weight:600;color:var(--navy);margin-bottom:4px;">Is my data stored or shared?</h3>
+          <p class="muted">No. LabAssist does not store, log, or share any values you enter. Everything stays in your browser session only.</p>
+        </div>
+      </section>
+
     </main>
 
     <footer class="footer">
       © {{ current_year }} LabAssist &nbsp;·&nbsp; Built for patients, by doctors &nbsp;·&nbsp;
-      <a href="#">Privacy</a>
+      For informational use only
     </footer>
 
   </div>
