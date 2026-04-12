@@ -317,84 +317,100 @@ def interpret():
 
 def generate_summary(lab_id, interpretations, age, gender):
     abn = {i["name"]: i for i in interpretations if i["status"] in ("Low", "High")}
+
     if lab_id == "cbc":
-        hb  = abn.get("Hemoglobin") or next((i for i in interpretations if i["name"] == "Hemoglobin"), None)
-        mcv = abn.get("Mean Corpuscular Volume (MCV)") or next((i for i in interpretations if i["name"].startswith("Mean Corpuscular Volume")), None)
-        wbc = abn.get("White Blood Cells") or next((i for i in interpretations if i["name"].startswith("White")), None)
-        plt = abn.get("Platelet Count") or next((i for i in interpretations if "Platelet" in i["name"]), None)
+        hb  = next((i for i in interpretations if i["id"] == "hb"), None)
+        mcv = next((i for i in interpretations if i["id"] == "mcv"), None)
+        wbc = next((i for i in interpretations if i["id"] == "wbc"), None)
+        plt = next((i for i in interpretations if i["id"] == "plt"), None)
         parts = []
         if hb and hb["value"] is not None and hb["status"] == "Low":
             if mcv and mcv["value"] is not None:
                 if mcv["value"] < 80:
-                    parts.append("Microcytic anemia — consider iron deficiency or thalassemia.")
+                    parts.append("Your hemoglobin is low and your red blood cells are smaller than normal. This pattern is most commonly caused by iron deficiency. Low iron is very common and very treatable — please see a doctor who may recommend iron supplements or further tests.")
                 elif mcv["value"] > 100:
-                    parts.append("Macrocytic anemia — consider B12/folate deficiency.")
+                    parts.append("Your hemoglobin is low and your red blood cells are larger than normal. This is often caused by low Vitamin B12 or folate. Please see a doctor — both are easily treated with supplements.")
                 else:
-                    parts.append("Normocytic anemia — consider acute blood loss or chronic disease.")
+                    parts.append("Your hemoglobin is low with normal sized red blood cells. This type of anemia can be caused by a chronic illness, recent blood loss, or kidney problems. Please see a doctor to find out the cause.")
             else:
-                parts.append("Anemia (low hemoglobin) — correlate with MCV for classification.")
+                parts.append("Your hemoglobin is low which means you may have anemia. You might feel tired, weak, or short of breath. Please see a doctor to find out the cause and get the right treatment.")
         if wbc and wbc["value"] is not None and wbc["status"] == "High":
-            parts.append("Leukocytosis — possible infection or inflammation.")
+            parts.append("Your white blood cell count is high which usually means your body is fighting an infection. This is common with bacterial infections. Please see a doctor if you have fever, pain, or feel generally unwell.")
         if plt and plt["value"] is not None and plt["status"] == "Low":
-            parts.append("Thrombocytopenia — consider viral infection, DIC, or marrow suppression.")
-        return " ".join(parts) if parts else "CBC: no major abnormalities detected."
+            parts.append("Your platelet count is low which means your blood may take longer to clot. You may notice easy bruising. Please see a doctor promptly.")
+        if not parts:
+            return "Your CBC results look largely normal. No major abnormalities were detected. If you have any symptoms or concerns, please discuss with your doctor."
+        parts.append("Remember — this is a general guide only. Please consult your doctor for a proper diagnosis.")
+        return " ".join(parts)
+
     if lab_id == "rft":
-        creat = next((i for i in interpretations if i["name"] == "Serum Creatinine" or i["id"] == "creatinine"), None)
-        urea  = next((i for i in interpretations if "Urea" in i["name"] or i["id"] == "urea"), None)
-        na    = next((i for i in interpretations if "Sodium" in i["name"] or i["id"] == "na"), None)
-        k     = next((i for i in interpretations if "Potassium" in i["name"] or i["id"] == "k"), None)
+        creat = next((i for i in interpretations if i["id"] == "creatinine"), None)
+        urea  = next((i for i in interpretations if i["id"] == "urea"), None)
+        na    = next((i for i in interpretations if i["id"] == "na"), None)
+        k     = next((i for i in interpretations if i["id"] == "k"), None)
         parts = []
         if creat and creat["value"] is not None and creat["status"] == "High":
-            parts.append("Raised creatinine — suggests renal impairment or AKI; correlate clinically.")
+            parts.append("Your creatinine is high which is an important sign that your kidneys may not be filtering waste properly. Please see a doctor as soon as possible for further evaluation.")
         if urea and urea["value"] is not None and urea["status"] == "High":
-            parts.append("High urea — consider dehydration, renal impairment or high protein intake.")
-        if na and na["value"] is not None and na["status"] != "Normal":
-            parts.append("Sodium abnormality — check volume status and medications.")
-        if k and k["value"] is not None and k["status"] != "Normal":
-            parts.append("Potassium abnormality — beware of arrhythmia risk if severe.")
-        return " ".join(parts) if parts else "RFT: no major abnormalities detected."
+            parts.append("Your urea is high. This can be caused by dehydration, kidney problems, or a high protein diet. Please make sure you are drinking enough water and see a doctor.")
+        if na and na["value"] is not None and na["status"] != "Normal" and na["status"] != "Not entered":
+            parts.append("Your sodium level is outside the normal range. Sodium is important for fluid balance in your body. Please see a doctor.")
+        if k and k["value"] is not None and k["status"] != "Normal" and k["status"] != "Not entered":
+            parts.append("Your potassium level is outside the normal range. This can affect your heart and muscles. Please see a doctor promptly.")
+        if not parts:
+            return "Your kidney function tests look largely normal. No major abnormalities detected. If you have any symptoms or concerns, please speak to your doctor."
+        parts.append("Please consult your doctor for a proper assessment.")
+        return " ".join(parts)
+
     if lab_id == "lft":
-        alt = next((i for i in interpretations if "ALT" in i["name"] or i["id"] == "alt"), None)
-        alb = next((i for i in interpretations if "Albumin" in i["name"] or i["id"] == "alb"), None)
+        alt = next((i for i in interpretations if i["id"] == "alt"), None)
+        alb = next((i for i in interpretations if i["id"] == "alb"), None)
+        tbil = next((i for i in interpretations if i["id"] == "tbil"), None)
         parts = []
         if alt and alt["value"] is not None and alt["status"] == "High":
-            parts.append("Raised ALT/AST — suggests hepatocellular injury (e.g., hepatitis, drug toxicity).")
+            parts.append("Your liver enzyme (ALT) is high which means your liver may be under stress. Common causes include fatty liver, hepatitis, or certain medications. Please see a doctor for further evaluation.")
         if alb and alb["value"] is not None and alb["status"] == "Low":
-            parts.append("Low albumin — consider chronic liver disease or protein loss.")
-        return " ".join(parts) if parts else "LFT: no major abnormalities detected."
+            parts.append("Your albumin is low. This protein is made by the liver and a low level can be a sign of liver disease or poor nutrition. Please see a doctor.")
+        if tbil and tbil["value"] is not None and tbil["status"] == "High":
+            parts.append("Your bilirubin is high. If your skin or eyes look yellow, please see a doctor urgently. Otherwise please arrange an appointment soon.")
+        if not parts:
+            return "Your liver function tests look largely normal. No major abnormalities detected. If you have any symptoms or concerns, please speak to your doctor."
+        parts.append("Please consult your doctor for a proper assessment.")
+        return " ".join(parts)
+
     if lab_id == "tft":
-        tsh = next((i for i in interpretations if i["name"] == "TSH" or i["id"] == "tsh"), None)
+        tsh = next((i for i in interpretations if i["id"] == "tsh"), None)
         if tsh and tsh["value"] is not None:
             if tsh["status"] == "High":
-                return "Likely hypothyroidism (high TSH). Correlate with free T4."
+                return "Your TSH is high which suggests your thyroid gland may be underactive (hypothyroidism). Common symptoms include feeling tired, weight gain, feeling cold, and dry skin. The good news is this is very treatable. Please see a doctor."
             if tsh["status"] == "Low":
-                return "Likely hyperthyroidism (suppressed TSH). Correlate with free T4/T3."
-        return "TFT: no major abnormalities detected."
+                return "Your TSH is low which suggests your thyroid gland may be overactive (hyperthyroidism). Common symptoms include feeling anxious, weight loss, fast heartbeat, and feeling hot. Please see a doctor for further tests."
+        return "Your thyroid function tests look normal. No major abnormalities detected. If you have any symptoms, please speak to your doctor."
+
     if lab_id == "abg":
         ph   = next((i for i in interpretations if i["id"] == "ph"), None)
         pco2 = next((i for i in interpretations if i["id"] == "pco2"), None)
         hco3 = next((i for i in interpretations if i["id"] == "hco3"), None)
         if not ph or not pco2 or not hco3 or None in (ph["value"], pco2["value"], hco3["value"]):
-            return "ABG: incomplete data — please enter values for pH, pCO₂, and HCO₃⁻."
+            return "Please enter values for pH, pCO₂, and HCO₃⁻ to get a summary."
         ph_val, pco2_val, hco3_val = ph["value"], pco2["value"], hco3["value"]
         if ph_val < 7.35:
             if pco2_val > 45 and hco3_val >= 22:
-                return "Respiratory Acidosis — likely due to hypoventilation (e.g., COPD, CNS depression)."
+                return "Your results suggest your blood is too acidic due to a breathing problem (respiratory acidosis). This means the lungs may not be removing enough carbon dioxide. This needs medical attention."
             if hco3_val < 22 and pco2_val <= 45:
-                return "Metabolic Acidosis — consider DKA, renal failure, or lactic acidosis."
+                return "Your results suggest your blood is too acidic due to a metabolic cause (metabolic acidosis). This can happen with uncontrolled diabetes, kidney problems, or other conditions. Please seek medical attention."
             if pco2_val > 45 and hco3_val < 22:
-                return "Mixed Acidosis — both respiratory and metabolic components present."
-            return "Acidemia — unclassified pattern; check for mixed disorder."
+                return "Your results show a mixed pattern where both breathing and metabolic factors are making your blood too acidic. This needs urgent medical attention."
+            return "Your blood appears to be more acidic than normal. Please seek medical attention."
         if ph_val > 7.45:
             if pco2_val < 35 and hco3_val <= 26:
-                return "Respiratory Alkalosis — likely due to hyperventilation (anxiety, hypoxia, sepsis)."
+                return "Your results suggest your blood is too alkaline due to a breathing pattern (respiratory alkalosis). This can happen with anxiety or rapid breathing. Please see a doctor."
             if hco3_val > 26 and pco2_val >= 35:
-                return "Metabolic Alkalosis — may result from vomiting, diuretics, or bicarbonate excess."
-            if pco2_val < 35 and hco3_val > 26:
-                return "Mixed Alkalosis — combined respiratory and metabolic causes."
-            return "Alkalemia — unclear pattern, consider mixed disorder."
-        return "Normal ABG — no major acid-base disturbance detected."
-    return "No focused summary available for this panel."
+                return "Your results suggest your blood is too alkaline due to a metabolic cause. This can happen with prolonged vomiting or certain medications. Please see a doctor."
+            return "Your blood appears to be more alkaline than normal. Please see a doctor."
+        return "Your blood gas values appear to be within a normal range. No major acid-base disturbance detected."
+
+    return "No summary available for this panel. Please consult your doctor for interpretation."
 
 
 # ── SEO routes ─────────────────────────────────────────────────────────────────
