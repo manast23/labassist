@@ -2,382 +2,427 @@
   {
     "id": "cbc",
     "panel_name": "Complete Blood Count (CBC)",
+    "guide": [
+      {"test": "Hemoglobin", "also_known_as": "Hb, HGB, Hgb"},
+      {"test": "White Blood Cells", "also_known_as": "WBC, TLC, Leukocytes, White Cell Count"},
+      {"test": "Platelet Count", "also_known_as": "PLT, Thrombocytes, Platelet"},
+      {"test": "Red Blood Cells", "also_known_as": "RBC, Red Cell Count, Erythrocytes"},
+      {"test": "Hematocrit", "also_known_as": "HCT, PCV, Packed Cell Volume"},
+      {"test": "Mean Corpuscular Volume", "also_known_as": "MCV, Mean Cell Volume"},
+      {"test": "Mean Corpuscular Hemoglobin", "also_known_as": "MCH, Mean Cell Hemoglobin"},
+      {"test": "MCHC", "also_known_as": "Mean Corpuscular Hemoglobin Concentration"},
+      {"test": "Red Cell Distribution Width", "also_known_as": "RDW, RDW-CV"}
+    ],
     "tests": [
       {
         "id": "hb",
         "name": "Hemoglobin",
         "units": "g/dL",
         "normal_range": "Male: 13.5-17.5, Female: 12-15.5",
-        "low_causes": "Anemia (blood loss, iron deficiency, chronic disease, renal disease)",
-        "high_causes": "Polycythemia (dehydration, chronic hypoxia, polycythemia vera)"
+        "low_causes": "Your hemoglobin is low — this means your blood may not be carrying enough oxygen around your body. You may feel tired, weak, or short of breath. The most common cause is low iron, often from poor diet or blood loss. See a doctor for a simple iron test to find out why.",
+        "high_causes": "Your hemoglobin is higher than normal. This can happen due to dehydration or living at high altitude. In some cases it may need further investigation. Please consult your doctor."
       },
       {
         "id": "wbc",
         "name": "White Blood Cells",
         "units": "×10⁹/L",
         "normal_range": "4.0-11.0",
-        "low_causes": "Bone marrow suppression, viral infections, autoimmune disorders",
-        "high_causes": "Infection, inflammation, leukemia, corticosteroid use"
+        "low_causes": "Your white blood cell count is low. White blood cells fight infections, so a low count means your immune system may be weaker than usual. This can happen after a viral illness or certain medications. Please see a doctor especially if you feel unwell or have a fever.",
+        "high_causes": "Your white blood cell count is high. This usually means your body is actively fighting an infection or inflammation somewhere. It is common with bacterial infections. See a doctor if you have fever, pain, or feel generally unwell."
       },
       {
         "id": "plt",
         "name": "Platelet Count",
         "units": "×10⁹/L",
         "normal_range": "150-450",
-        "low_causes": "Bone marrow suppression, viral infection, sepsis, DIC, drugs (e.g. heparin)",
-        "high_causes": "Reactive thrombocytosis (inflammation, iron deficiency), myeloproliferative disorder"
+        "low_causes": "Your platelet count is low. Platelets help your blood clot when you bleed. A low count means you may bruise or bleed more easily than normal. This can happen with viral infections or certain medications. Please see a doctor promptly.",
+        "high_causes": "Your platelet count is higher than normal. This is often a response to inflammation or infection in the body and usually not dangerous on its own. Your doctor can advise if any follow up is needed."
       },
       {
         "id": "rbc",
         "name": "Red Blood Cells",
         "units": "×10¹²/L",
         "normal_range": "Male: 4.5-5.9, Female: 4.1-5.1",
-        "low_causes": "Anemia of any cause",
-        "high_causes": "Polycythemia, dehydration, chronic hypoxia"
+        "low_causes": "Your red blood cell count is low. Red blood cells carry oxygen throughout your body. A low count often means you have anemia and may feel tired or dizzy. Please see a doctor to find the cause.",
+        "high_causes": "Your red blood cell count is higher than normal. This can sometimes be caused by dehydration. Please see your doctor to discuss this result."
       },
       {
         "id": "hct",
         "name": "Hematocrit (PCV)",
         "units": "%",
         "normal_range": "Male: 41-53, Female: 36-46",
-        "low_causes": "Anemia, overhydration",
-        "high_causes": "Dehydration, polycythemia"
+        "low_causes": "Your hematocrit is low. This means there are fewer red blood cells than normal in your blood and is usually a sign of anemia. You may feel tired or short of breath. Please consult your doctor.",
+        "high_causes": "Your hematocrit is higher than normal. This can be caused by dehydration. Drink plenty of water and consult your doctor if it remains high."
       },
       {
         "id": "mcv",
         "name": "Mean Corpuscular Volume (MCV)",
         "units": "fL",
         "normal_range": "80-96",
-        "low_causes": "Microcytic anemia (iron deficiency, thalassemia)",
-        "high_causes": "Macrocytic anemia (B12 or folate deficiency, liver disease)"
+        "low_causes": "Your MCV is low, meaning your red blood cells are smaller than normal. This is commonly caused by iron deficiency or a condition called thalassemia. A doctor can order further tests to find out.",
+        "high_causes": "Your MCV is high, meaning your red blood cells are larger than normal. This is often caused by low Vitamin B12 or folate. It can also happen with certain medications or liver conditions. Please see a doctor."
       },
       {
         "id": "mch",
         "name": "Mean Corpuscular Hemoglobin (MCH)",
         "units": "pg",
         "normal_range": "27-33",
-        "low_causes": "Hypochromic anemia (iron deficiency, thalassemia)",
-        "high_causes": "Macrocytosis, spherocytosis"
+        "low_causes": "Your MCH is low. This means each red blood cell carries less hemoglobin than normal, often due to iron deficiency. Please consult your doctor.",
+        "high_causes": "Your MCH is high. This is often seen alongside a high MCV and may indicate low Vitamin B12 or folate. Please see your doctor."
       },
       {
         "id": "mchc",
         "name": "Mean Corpuscular Hemoglobin Concentration (MCHC)",
         "units": "g/dL",
         "normal_range": "32-36",
-        "low_causes": "Hypochromic anemia",
-        "high_causes": "Spherocytosis, hemoconcentration"
+        "low_causes": "Your MCHC is low, which means your red blood cells have less color than normal. This is usually a sign of iron deficiency anemia. Please consult your doctor.",
+        "high_causes": "Your MCHC is higher than normal. This can sometimes be a lab finding or may need further investigation. Please discuss with your doctor."
       },
       {
         "id": "rdw",
         "name": "Red Cell Distribution Width (RDW)",
         "units": "%",
         "normal_range": "11.5-14.5",
-        "low_causes": "Uniform RBC size (rarely significant)",
-        "high_causes": "Mixed anemia (iron + B12 deficiency), evolving anemia"
+        "low_causes": "Your RDW is within a low normal range. This is generally not a concern.",
+        "high_causes": "Your RDW is high. This means your red blood cells vary a lot in size, which can be a sign of mixed nutritional deficiencies like iron and Vitamin B12 together. Please see a doctor for further tests."
       }
     ]
   },
   {
     "id": "lft",
     "panel_name": "Liver Function Tests (LFT)",
+    "guide": [
+      {"test": "ALT", "also_known_as": "SGPT, Alanine Aminotransferase, Alanine Transaminase"},
+      {"test": "AST", "also_known_as": "SGOT, Aspartate Aminotransferase"},
+      {"test": "Alkaline Phosphatase", "also_known_as": "ALP, Alk Phos"},
+      {"test": "Total Bilirubin", "also_known_as": "T.Bil, Bilirubin Total, TBIL"},
+      {"test": "Albumin", "also_known_as": "Alb, Serum Albumin"}
+    ],
     "tests": [
       {
         "id": "alt",
         "name": "ALT (SGPT)",
         "units": "U/L",
         "normal_range": "7-56",
-        "low_causes": "Normal or vitamin B6 deficiency",
-        "high_causes": "Liver injury (viral hepatitis, fatty liver, drugs)"
+        "low_causes": "Your ALT is normal or low. This is generally not a concern.",
+        "high_causes": "Your ALT is high. ALT is a liver enzyme and when it rises it usually means the liver is under stress or has been injured. Common causes include fatty liver, viral hepatitis, or certain medications. Please see a doctor — this needs follow up."
       },
       {
         "id": "ast",
         "name": "AST (SGOT)",
         "units": "U/L",
         "normal_range": "10-40",
-        "low_causes": "Normal finding",
-        "high_causes": "Liver injury, myocardial infarction, muscle damage"
+        "low_causes": "Your AST is normal. This is not a concern.",
+        "high_causes": "Your AST is high. This enzyme rises when the liver or muscles are damaged. Common causes include liver disease or intense physical exertion. Please consult your doctor for further evaluation."
       },
       {
         "id": "alp",
         "name": "Alkaline Phosphatase (ALP)",
         "units": "U/L",
         "normal_range": "44-147",
-        "low_causes": "Malnutrition, hypothyroidism",
-        "high_causes": "Cholestasis, bone disease, pregnancy"
+        "low_causes": "Your ALP is low. This can sometimes be related to poor nutrition. Please mention it to your doctor.",
+        "high_causes": "Your ALP is high. This can be related to the liver, bile ducts, or bones. It is also normally higher during pregnancy. Please see a doctor to find out the cause."
       },
       {
         "id": "tbil",
         "name": "Total Bilirubin",
         "units": "mg/dL",
         "normal_range": "0.3-1.2",
-        "low_causes": "Not clinically significant",
-        "high_causes": "Hemolysis, liver dysfunction, bile duct obstruction"
+        "low_causes": "Your bilirubin is normal. No concern.",
+        "high_causes": "Your bilirubin is high. Bilirubin is a yellow pigment produced when red blood cells break down. A high level can cause yellowing of the skin or eyes (jaundice). This needs medical attention — please see a doctor soon."
       },
       {
         "id": "alb",
         "name": "Albumin",
         "units": "g/dL",
         "normal_range": "3.5-5.0",
-        "low_causes": "Liver disease, nephrotic syndrome, malnutrition",
-        "high_causes": "Dehydration"
+        "low_causes": "Your albumin is low. Albumin is a protein made by the liver. A low level can be a sign of liver disease, kidney problems, or poor nutrition. Please see a doctor to find out why.",
+        "high_causes": "Your albumin is slightly high. This is usually caused by dehydration. Make sure you are drinking enough fluids and mention this to your doctor."
       }
     ]
   },
   {
-  "id": "rft",
-  "panel_name": "Renal Function Tests (RFT)",
-  "tests": [
-    {
-      "id": "urea",
-      "name": "Blood Urea",
-      "units": "mg/dL",
-      "normal_range": "7-20",
-      "low_causes": "Liver failure, overhydration, malnutrition",
-      "high_causes": "Renal dysfunction, dehydration, high protein diet"
-    },
-    {
-      "id": "creatinine",
-      "name": "Serum Creatinine",
-      "units": "mg/dL",
-      "normal_range": "Male: 0.74-1.35, Female: 0.59-1.04",
-      "low_causes": "Low muscle mass, pregnancy",
-      "high_causes": "Renal failure, dehydration, muscle injury"
-    },
-    {
-      "id": "na",
-      "name": "Sodium (Na⁺)",
-      "units": "mmol/L",
-      "normal_range": "135-145",
-      "low_causes": "Hyponatremia (SIADH, diuretics, heart failure)",
-      "high_causes": "Hypernatremia (dehydration, diabetes insipidus)"
-    },
-    {
-      "id": "k",
-      "name": "Potassium (K⁺)",
-      "units": "mmol/L",
-      "normal_range": "3.5-5.0",
-      "low_causes": "Vomiting, diarrhea, diuretics, Cushing’s",
-      "high_causes": "Renal failure, ACE inhibitors, acidosis"
-    },
-    {
-      "id": "cl",
-      "name": "Chloride (Cl⁻)",
-      "units": "mmol/L",
-      "normal_range": "98-107",
-      "low_causes": "Hypochloremia (vomiting, metabolic alkalosis, SIADH)",
-      "high_causes": "Hyperchloremia (dehydration, metabolic acidosis, renal tubular acidosis)"
-    }
-  ]
-},
+    "id": "rft",
+    "panel_name": "Renal Function Tests (RFT)",
+    "guide": [
+      {"test": "Blood Urea", "also_known_as": "Urea, BUN, Blood Urea Nitrogen"},
+      {"test": "Serum Creatinine", "also_known_as": "Creatinine, Cr, S.Creatinine"},
+      {"test": "Sodium", "also_known_as": "Na, Na+, Serum Sodium"},
+      {"test": "Potassium", "also_known_as": "K, K+, Serum Potassium"},
+      {"test": "Chloride", "also_known_as": "Cl, Cl-, Serum Chloride"}
+    ],
+    "tests": [
+      {
+        "id": "urea",
+        "name": "Blood Urea",
+        "units": "mg/dL",
+        "normal_range": "7-20",
+        "low_causes": "Your urea is low. This can sometimes happen with low protein intake or liver problems. Please mention it to your doctor.",
+        "high_causes": "Your urea is high. This can be a sign that your kidneys are not filtering waste properly, or it can happen with dehydration or a high protein diet. Please see a doctor for further evaluation."
+      },
+      {
+        "id": "creatinine",
+        "name": "Serum Creatinine",
+        "units": "mg/dL",
+        "normal_range": "Male: 0.74-1.35, Female: 0.59-1.04",
+        "low_causes": "Your creatinine is low. This can happen with low muscle mass and is usually not a concern. Mention it to your doctor.",
+        "high_causes": "Your creatinine is high. Creatinine is a waste product filtered by the kidneys. A high level is an important sign that your kidneys may not be working properly. Please see a doctor as soon as possible."
+      },
+      {
+        "id": "na",
+        "name": "Sodium (Na⁺)",
+        "units": "mmol/L",
+        "normal_range": "135-145",
+        "low_causes": "Your sodium is low. Sodium helps control fluid balance in your body. A low level can cause symptoms like headache, nausea, or confusion. Please see a doctor — this needs attention.",
+        "high_causes": "Your sodium is high. This is often caused by not drinking enough water. Make sure you stay well hydrated and consult your doctor."
+      },
+      {
+        "id": "k",
+        "name": "Potassium (K⁺)",
+        "units": "mmol/L",
+        "normal_range": "3.5-5.0",
+        "low_causes": "Your potassium is low. Potassium is important for your heart and muscles. A low level can cause muscle weakness or cramps. Please see a doctor — this may need treatment.",
+        "high_causes": "Your potassium is high. High potassium can affect your heart rhythm. Please see a doctor promptly, especially if you feel any palpitations or muscle weakness."
+      },
+      {
+        "id": "cl",
+        "name": "Chloride (Cl⁻)",
+        "units": "mmol/L",
+        "normal_range": "98-107",
+        "low_causes": "Your chloride is low. This can happen with vomiting or certain medications. Please mention it to your doctor.",
+        "high_causes": "Your chloride is high. This can be a sign of dehydration or a kidney issue. Please consult your doctor."
+      }
+    ]
+  },
   {
     "id": "tft",
     "panel_name": "Thyroid Function Tests (TFT)",
+    "guide": [
+      {"test": "TSH", "also_known_as": "Thyroid Stimulating Hormone, Thyrotropin"},
+      {"test": "Free T3", "also_known_as": "FT3, Free Triiodothyronine, T3"},
+      {"test": "Free T4", "also_known_as": "FT4, Free Thyroxine, T4"}
+    ],
     "tests": [
       {
         "id": "tsh",
         "name": "TSH",
         "units": "mIU/L",
         "normal_range": "0.4-4.5",
-        "low_causes": "Hyperthyroidism, pituitary dysfunction",
-        "high_causes": "Primary hypothyroidism, thyroiditis"
+        "low_causes": "Your TSH is low. This usually means your thyroid gland is overactive and producing too much thyroid hormone. You may feel anxious, have a fast heartbeat, lose weight, or feel hot. Please see a doctor.",
+        "high_causes": "Your TSH is high. This usually means your thyroid gland is underactive and not producing enough thyroid hormone. You may feel tired, gain weight, feel cold, or have dry skin. Please see a doctor — this is very treatable."
       },
       {
         "id": "t3",
         "name": "Free T3",
         "units": "pg/mL",
         "normal_range": "2.3-4.2",
-        "low_causes": "Hypothyroidism, euthyroid sick syndrome",
-        "high_causes": "Hyperthyroidism"
+        "low_causes": "Your Free T3 is low. This can be a sign of an underactive thyroid. Please consult your doctor along with your TSH result.",
+        "high_causes": "Your Free T3 is high. This can be a sign of an overactive thyroid. Please consult your doctor along with your TSH result."
       },
       {
         "id": "t4",
         "name": "Free T4",
         "units": "ng/dL",
         "normal_range": "0.8-1.8",
-        "low_causes": "Hypothyroidism, pituitary disease",
-        "high_causes": "Hyperthyroidism, T4 therapy"
+        "low_causes": "Your Free T4 is low. This suggests your thyroid may be underactive. Please see a doctor who will likely check your TSH as well.",
+        "high_causes": "Your Free T4 is high. This suggests your thyroid may be overactive. Please see a doctor for further evaluation."
       }
     ]
   },
   {
     "id": "abg",
     "panel_name": "Arterial Blood Gas (ABG)",
+    "guide": [
+      {"test": "pH", "also_known_as": "Blood pH, Arterial pH"},
+      {"test": "pCO2", "also_known_as": "PCO2, pCO₂, Partial Pressure of CO2"},
+      {"test": "HCO3", "also_known_as": "HCO₃, Bicarbonate, Bicarb"},
+      {"test": "pO2", "also_known_as": "PO2, pO₂, Partial Pressure of Oxygen"},
+      {"test": "O2 Saturation", "also_known_as": "O2 Sat, SaO2, Oxygen Saturation"}
+    ],
     "tests": [
       {
         "id": "ph",
         "name": "pH",
         "units": "",
         "normal_range": "7.35-7.45",
-        "low_causes": "Acidosis (metabolic or respiratory)",
-        "high_causes": "Alkalosis (metabolic or respiratory)"
+        "low_causes": "Your blood pH is low, meaning your blood is more acidic than normal. This needs medical attention.",
+        "high_causes": "Your blood pH is high, meaning your blood is more alkaline than normal. This needs medical attention."
       },
       {
         "id": "pco2",
         "name": "pCO₂",
         "units": "mmHg",
         "normal_range": "35-45",
-        "low_causes": "Hyperventilation (respiratory alkalosis)",
-        "high_causes": "Hypoventilation (respiratory acidosis)"
+        "low_causes": "Your pCO2 is low. This can happen when you are breathing too fast. Please consult your doctor.",
+        "high_causes": "Your pCO2 is high. This can happen when the lungs are not removing enough carbon dioxide. Please consult your doctor."
       },
       {
         "id": "hco3",
         "name": "HCO₃⁻",
         "units": "mmol/L",
         "normal_range": "22-26",
-        "low_causes": "Metabolic acidosis",
-        "high_causes": "Metabolic alkalosis"
+        "low_causes": "Your bicarbonate is low. This can be a sign of metabolic acidosis. Please see a doctor.",
+        "high_causes": "Your bicarbonate is high. This can be a sign of metabolic alkalosis. Please see a doctor."
       },
       {
         "id": "po2",
         "name": "pO₂",
         "units": "mmHg",
         "normal_range": "80-100",
-        "low_causes": "Hypoxemia (COPD, PE, pneumonia, ARDS)",
-        "high_causes": "Oxygen therapy, hyperventilation"
+        "low_causes": "Your oxygen level in the blood is low. This means your lungs may not be getting enough oxygen into your bloodstream. Please seek medical attention.",
+        "high_causes": "Your pO2 is high. This is usually seen when someone is on supplemental oxygen. Generally not a concern."
       },
       {
         "id": "o2sat",
         "name": "O₂ Saturation",
         "units": "%",
         "normal_range": "95-100",
-        "low_causes": "Hypoxia, anemia, lung disease",
-        "high_causes": "Supplemental oxygen"
+        "low_causes": "Your oxygen saturation is low. This means your blood is not carrying as much oxygen as it should. Below 94% needs medical attention. Please see a doctor or go to the emergency room if you feel breathless.",
+        "high_causes": "Your oxygen saturation is high. This is usually fine and often seen with supplemental oxygen."
       }
     ]
   },
   {
-  "id": "urine_re",
-  "panel_name": "Urine Routine Examination (R/E)",
-  "tests": [
-    {
-      "id": "color",
-      "name": "Color",
-      "units": "",
-      "normal_range": "Pale yellow to amber",
-      "low_causes": "-",
-      "high_causes": "Dark yellow (dehydration), red (hematuria), brown (bilirubinuria)"
-    },
-    {
-      "id": "appearance",
-      "name": "Appearance",
-      "units": "",
-      "normal_range": "Clear",
-      "low_causes": "-",
-      "high_causes": "Turbid (infection, pus cells, crystals)"
-    },
-    {
-      "id": "specific_gravity",
-      "name": "Specific Gravity",
-      "units": "",
-      "normal_range": "1.005–1.030",
-      "low_causes": "Dilute urine (diabetes insipidus, overhydration)",
-      "high_causes": "Concentrated urine (dehydration, glycosuria, proteinuria)"
-    },
-    {
-      "id": "ph",
-      "name": "pH",
-      "units": "",
-      "normal_range": "4.5–8.0",
-      "low_causes": "High-protein diet, acidosis",
-      "high_causes": "Vegetarian diet, urinary tract infection"
-    },
-    {
-      "id": "protein",
-      "name": "Protein",
-      "units": "",
-      "normal_range": "Negative",
-      "low_causes": "-",
-      "high_causes": "Proteinuria (nephrotic syndrome, glomerulonephritis)"
-    },
-    {
-      "id": "glucose",
-      "name": "Glucose",
-      "units": "",
-      "normal_range": "Negative",
-      "low_causes": "-",
-      "high_causes": "Glycosuria (diabetes mellitus)"
-    },
-    {
-      "id": "ketones",
-      "name": "Ketones",
-      "units": "",
-      "normal_range": "Negative",
-      "low_causes": "-",
-      "high_causes": "Ketonuria (diabetic ketoacidosis, starvation)"
-    },
-    {
-      "id": "bilirubin",
-      "name": "Bilirubin",
-      "units": "",
-      "normal_range": "Negative",
-      "low_causes": "-",
-      "high_causes": "Bilirubinuria (liver disease, biliary obstruction)"
-    },
-    {
-      "id": "urobilinogen",
-      "name": "Urobilinogen",
-      "units": "EU/dL",
-      "normal_range": "0.1–1.0",
-      "low_causes": "Antibiotic use, bile duct obstruction",
-      "high_causes": "Hemolysis, liver disease"
-    },
-    {
-      "id": "rbc",
-      "name": "RBCs",
-      "units": "cells/HPF",
-      "normal_range": "0–3",
-      "low_causes": "-",
-      "high_causes": "Hematuria (stones, infection, trauma)"
-    },
-    {
-      "id": "wbc",
-      "name": "WBCs",
-      "units": "cells/HPF",
-      "normal_range": "0–5",
-      "low_causes": "-",
-      "high_causes": "Pyuria (infection, inflammation)"
-    },
-    {
-      "id": "pus_cells",
-      "name": "Pus Cells",
-      "units": "cells/HPF",
-      "normal_range": "0–5",
-      "low_causes": "-",
-      "high_causes": "Pyuria (infection, urinary tract infection)"
-    },
-    {
-      "id": "casts",
-      "name": "Casts",
-      "units": "",
-      "normal_range": "Absent",
-      "low_causes": "-",
-      "high_causes": "Hyaline, granular, or RBC casts (renal disease)"
-    },
-    {
-      "id": "crystals",
-      "name": "Crystals",
-      "units": "",
-      "normal_range": "Absent or few",
-      "low_causes": "-",
-      "high_causes": "Uric acid, oxalate, or phosphate crystals (stone risk)"
-    },
-    {
-      "id": "bacteria",
-      "name": "Bacteria",
-      "units": "",
-      "normal_range": "Absent",
-      "low_causes": "-",
-      "high_causes": "Bacteriuria (urinary tract infection)"
-    },
-    {
-      "id": "epithelial_cells",
-      "name": "Epithelial Cells",
-      "units": "cells/HPF",
-      "normal_range": "Few",
-      "low_causes": "-",
-      "high_causes": "Contamination, infection, tubular damage"
-    }
-  ]
-}
+    "id": "urine_re",
+    "panel_name": "Urine Routine Examination (R/E)",
+    "guide": [
+      {"test": "Specific Gravity", "also_known_as": "Sp. Gr, SpGr, S.Gravity"},
+      {"test": "pH", "also_known_as": "Urine pH"},
+      {"test": "Protein", "also_known_as": "Urine Protein, Proteinuria, Albumin"},
+      {"test": "Glucose", "also_known_as": "Urine Glucose, Urine Sugar, Glycosuria"},
+      {"test": "RBCs", "also_known_as": "Red Blood Cells, RBC/HPF"},
+      {"test": "WBCs", "also_known_as": "White Blood Cells, Pus Cells, WBC/HPF"},
+      {"test": "Ketones", "also_known_as": "Urine Ketones, Ketone Bodies"}
+    ],
+    "tests": [
+      {
+        "id": "color",
+        "name": "Color",
+        "units": "",
+        "normal_range": "Pale yellow to amber",
+        "low_causes": "Normal urine color.",
+        "high_causes": "Abnormal urine color can indicate dehydration (dark yellow), blood in urine (red or pink), or liver problems (brown). Please see a doctor if the color looks unusual."
+      },
+      {
+        "id": "appearance",
+        "name": "Appearance",
+        "units": "",
+        "normal_range": "Clear",
+        "low_causes": "Clear urine is normal.",
+        "high_causes": "Cloudy or turbid urine often means there may be an infection, pus cells, or crystals in the urine. Please see a doctor."
+      },
+      {
+        "id": "specific_gravity",
+        "name": "Specific Gravity",
+        "units": "",
+        "normal_range": "1.005–1.030",
+        "low_causes": "Your urine is very dilute. This can happen when you drink a lot of water. Sometimes it can be a sign of diabetes insipidus. Mention it to your doctor.",
+        "high_causes": "Your urine is very concentrated. This usually means you are not drinking enough water. Try to increase your fluid intake and consult your doctor if it persists."
+      },
+      {
+        "id": "ph",
+        "name": "pH",
+        "units": "",
+        "normal_range": "4.5–8.0",
+        "low_causes": "Your urine is acidic. This can happen with a high protein diet. Usually not a concern.",
+        "high_causes": "Your urine is alkaline. This can happen with a vegetarian diet or a urinary tract infection. Please mention it to your doctor."
+      },
+      {
+        "id": "protein",
+        "name": "Protein",
+        "units": "",
+        "normal_range": "Negative",
+        "low_causes": "No protein in urine. This is normal.",
+        "high_causes": "Protein was found in your urine. Normally there should be no protein in urine. This can be a sign of kidney problems. Please see a doctor for further testing."
+      },
+      {
+        "id": "glucose",
+        "name": "Glucose",
+        "units": "",
+        "normal_range": "Negative",
+        "low_causes": "No glucose in urine. This is normal.",
+        "high_causes": "Glucose was found in your urine. This can be a sign of diabetes or very high blood sugar. Please see a doctor and get your blood sugar checked."
+      },
+      {
+        "id": "ketones",
+        "name": "Ketones",
+        "units": "",
+        "normal_range": "Negative",
+        "low_causes": "No ketones in urine. This is normal.",
+        "high_causes": "Ketones were found in your urine. This can happen when you are not eating enough, on a very low carb diet, or in diabetic patients with poorly controlled sugar. Please see a doctor."
+      },
+      {
+        "id": "bilirubin",
+        "name": "Bilirubin",
+        "units": "",
+        "normal_range": "Negative",
+        "low_causes": "No bilirubin in urine. This is normal.",
+        "high_causes": "Bilirubin was found in your urine. This can be a sign of liver disease or a blockage in the bile ducts. Please see a doctor."
+      },
+      {
+        "id": "urobilinogen",
+        "name": "Urobilinogen",
+        "units": "EU/dL",
+        "normal_range": "0.1–1.0",
+        "low_causes": "Your urobilinogen is low. This can sometimes happen with bile duct problems or antibiotic use. Mention it to your doctor.",
+        "high_causes": "Your urobilinogen is high. This can be a sign of liver disease or increased breakdown of red blood cells. Please see a doctor."
+      },
+      {
+        "id": "rbc",
+        "name": "RBCs",
+        "units": "cells/HPF",
+        "normal_range": "0–3",
+        "low_causes": "No red blood cells in urine. This is normal.",
+        "high_causes": "Red blood cells were found in your urine. This means there may be blood in your urine, which can be caused by a urinary tract infection, kidney stones, or other conditions. Please see a doctor."
+      },
+      {
+        "id": "wbc",
+        "name": "WBCs",
+        "units": "cells/HPF",
+        "normal_range": "0–5",
+        "low_causes": "No significant white blood cells in urine. This is normal.",
+        "high_causes": "White blood cells were found in your urine. This usually means there is an infection or inflammation in the urinary tract. Please see a doctor."
+      },
+      {
+        "id": "pus_cells",
+        "name": "Pus Cells",
+        "units": "cells/HPF",
+        "normal_range": "0–5",
+        "low_causes": "No significant pus cells. This is normal.",
+        "high_causes": "Pus cells were found in your urine. This is a strong sign of a urinary tract infection. Please see a doctor who may prescribe antibiotics."
+      },
+      {
+        "id": "casts",
+        "name": "Casts",
+        "units": "",
+        "normal_range": "Absent",
+        "low_causes": "No casts found. This is normal.",
+        "high_causes": "Casts were found in your urine. This can be a sign of kidney disease. Please see a doctor for further evaluation."
+      },
+      {
+        "id": "crystals",
+        "name": "Crystals",
+        "units": "",
+        "normal_range": "Absent or few",
+        "low_causes": "No significant crystals found. This is normal.",
+        "high_causes": "Crystals were found in your urine. This can increase the risk of kidney stones. Drink plenty of water and consult your doctor."
+      },
+      {
+        "id": "bacteria",
+        "name": "Bacteria",
+        "units": "",
+        "normal_range": "Absent",
+        "low_causes": "No bacteria found. This is normal.",
+        "high_causes": "Bacteria were found in your urine. This is a sign of a urinary tract infection. Please see a doctor for appropriate treatment."
+      },
+      {
+        "id": "epithelial_cells",
+        "name": "Epithelial Cells",
+        "units": "cells/HPF",
+        "normal_range": "Few",
+        "low_causes": "Normal finding.",
+        "high_causes": "A high number of epithelial cells in urine can sometimes indicate contamination of the sample or an underlying issue. Please mention it to your doctor."
+      }
+    ]
+  }
 ]
-
