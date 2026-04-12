@@ -170,6 +170,24 @@
           </div>
           {% endif %}
 
+
+          {% set has_abnormal = interpretations | selectattr('status', 'in', ['Low', 'High']) | list %}
+          {% if has_abnormal %}
+          <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 12px; padding: 18px 20px; margin-top: 16px;">
+            <h4 style="font-size:0.88rem;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">📅 Book a Doctor Appointment</h4>
+            <p style="font-size:0.88rem;color:#1e293b;margin-bottom:14px;">Some of your values need attention. It is important to see a doctor for proper diagnosis and treatment. You can book an appointment online right now:</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a href="https://oladoc.com" target="_blank" rel="noopener noreferrer"
+                style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#0e7490;color:#fff;border-radius:8px;font-size:0.9rem;font-weight:600;text-decoration:none;">
+                Book on Oladoc →
+              </a>
+              <a href="https://marham.pk" target="_blank" rel="noopener noreferrer"
+                style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#1a3a5c;color:#fff;border-radius:8px;font-size:0.9rem;font-weight:600;text-decoration:none;">
+                Book on Marham →
+              </a>
+            </div>
+          </div>
+          {% endif %}
           <div class="disclaimer" style="margin-top:16px;">
             <span>⚠️</span>
             <span>This is for general information only and is not a medical diagnosis. Please always consult a qualified doctor before making any health decisions.</span>
