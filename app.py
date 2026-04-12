@@ -410,6 +410,85 @@ def generate_summary(lab_id, interpretations, age, gender):
             return "Your blood appears to be more alkaline than normal. Please see a doctor."
         return "Your blood gas values appear to be within a normal range. No major acid-base disturbance detected."
 
+
+    if lab_id == "lipid":
+        ldl   = next((i for i in interpretations if i["id"] == "ldl"), None)
+        hdl   = next((i for i in interpretations if i["id"] == "hdl"), None)
+        trig  = next((i for i in interpretations if i["id"] == "trig"), None)
+        tchol = next((i for i in interpretations if i["id"] == "total_chol"), None)
+        parts = []
+        if ldl and ldl["value"] is not None and ldl["status"] == "High":
+            parts.append("Your bad cholesterol (LDL) is high which increases your risk of heart disease and stroke. Diet changes and possibly medication can bring this down — please see a doctor.")
+        if hdl and hdl["value"] is not None and hdl["status"] == "Low":
+            parts.append("Your good cholesterol (HDL) is low. Regular exercise, quitting smoking, and a healthy diet can help raise it.")
+        if trig and trig["value"] is not None and trig["status"] == "High":
+            parts.append("Your triglycerides are high — this is often linked to a diet high in sugar and refined carbohydrates. Cutting down on sugary foods and drinks can make a big difference.")
+        if tchol and tchol["value"] is not None and tchol["status"] == "High":
+            parts.append("Your total cholesterol is above the recommended level.")
+        if not parts:
+            return "Your lipid profile looks largely normal. Keep maintaining a healthy diet and active lifestyle. Please discuss with your doctor if you have any heart related symptoms."
+        parts.append("Please see a doctor to discuss your heart health and get personalised advice.")
+        return " ".join(parts)
+
+    if lab_id == "diabetes":
+        fbs   = next((i for i in interpretations if i["id"] == "fbs"), None)
+        hba1c = next((i for i in interpretations if i["id"] == "hba1c"), None)
+        rbs   = next((i for i in interpretations if i["id"] == "rbs"), None)
+        parts = []
+        if hba1c and hba1c["value"] is not None:
+            if hba1c["value"] >= 6.5:
+                parts.append("Your HbA1c suggests diabetes. This means your blood sugar has been consistently high over the past 3 months. Please see a doctor as soon as possible — with proper management you can live a completely normal life.")
+            elif hba1c["value"] >= 5.7:
+                parts.append("Your HbA1c is in the prediabetes range. This is a warning sign that your blood sugar is higher than it should be. The good news is that lifestyle changes at this stage can prevent diabetes from developing.")
+        if fbs and fbs["value"] is not None and fbs["status"] == "High":
+            parts.append("Your fasting blood sugar is above normal. Please see a doctor for a proper diabetes assessment.")
+        if rbs and rbs["value"] is not None and rbs["status"] == "High":
+            parts.append("Your random blood sugar is high. Please see a doctor to check for diabetes.")
+        if not parts:
+            return "Your blood sugar results look normal. Keep maintaining a healthy diet, staying active, and maintaining a healthy weight to prevent diabetes. Well done!"
+        parts.append("Remember — diabetes is very manageable. Early action makes a big difference.")
+        return " ".join(parts)
+
+    if lab_id == "iron":
+        ferritin = next((i for i in interpretations if i["id"] == "ferritin"), None)
+        s_iron   = next((i for i in interpretations if i["id"] == "s_iron"), None)
+        tibc     = next((i for i in interpretations if i["id"] == "tibc"), None)
+        parts = []
+        if ferritin and ferritin["value"] is not None and ferritin["status"] == "Low":
+            parts.append("Your ferritin is low which means your iron stores are depleted. This is the most common cause of fatigue especially in women. Iron supplements prescribed by a doctor can help significantly.")
+        if s_iron and s_iron["value"] is not None and s_iron["status"] == "Low":
+            parts.append("Your serum iron is low. Combined with your other results this points to iron deficiency. Please see a doctor for treatment.")
+        if tibc and tibc["value"] is not None and tibc["status"] == "High":
+            parts.append("Your TIBC is high which is consistent with iron deficiency — your body is trying to absorb more iron.")
+        if not parts:
+            return "Your iron studies look normal. No significant iron deficiency detected. If you still feel unusually tired please discuss other possible causes with your doctor."
+        parts.append("Iron deficiency is very common and very treatable. Please see a doctor for the right supplements and dose.")
+        return " ".join(parts)
+
+    if lab_id == "vitamins":
+        vit_d  = next((i for i in interpretations if i["id"] == "vit_d"), None)
+        vit_b12 = next((i for i in interpretations if i["id"] == "vit_b12"), None)
+        parts = []
+        if vit_d and vit_d["value"] is not None and vit_d["status"] == "Low":
+            parts.append("Your Vitamin D is low — this is extremely common in Pakistan. It can cause fatigue, bone pain, and low mood. A doctor can prescribe the right dose of Vitamin D supplements for you.")
+        if vit_b12 and vit_b12["value"] is not None and vit_b12["status"] == "Low":
+            parts.append("Your Vitamin B12 is low. B12 deficiency can cause tiredness, tingling in hands and feet, and memory issues. It is easily treated with supplements or injections. Please see a doctor.")
+        if not parts:
+            return "Your Vitamin D and B12 levels look normal. Keep taking supplements if prescribed and maintain a balanced diet."
+        return " ".join(parts)
+
+    if lab_id == "hepatitis":
+        hbsag   = next((i for i in interpretations if i["id"] == "hbsag"), None)
+        anti_hcv = next((i for i in interpretations if i["id"] == "anti_hcv"), None)
+        parts = []
+        if hbsag and hbsag["status"] == "High":
+            parts.append("Your Hepatitis B test is positive. Please see a doctor or liver specialist as soon as possible. Hepatitis B is manageable with regular monitoring and treatment when needed.")
+        if anti_hcv and anti_hcv["status"] == "High":
+            parts.append("Your Hepatitis C test is positive. Please see a doctor immediately for a confirmatory PCR test. Hepatitis C is now completely curable with oral medicines available in Pakistan — do not delay.")
+        if not parts:
+            return "Your hepatitis markers look normal. No Hepatitis B or C infection detected. If you have not been vaccinated against Hepatitis B please speak to your doctor about getting vaccinated."
+        return " ".join(parts)
+
     return "No summary available for this panel. Please consult your doctor for interpretation."
 
 
