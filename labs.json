@@ -3,15 +3,42 @@
     "id": "cbc",
     "panel_name": "Complete Blood Count (CBC)",
     "guide": [
-      {"test": "Hemoglobin", "also_known_as": "Hb, HGB, Hgb"},
-      {"test": "White Blood Cells", "also_known_as": "WBC, TLC, Leukocytes, White Cell Count"},
-      {"test": "Platelet Count", "also_known_as": "PLT, Thrombocytes, Platelet"},
-      {"test": "Red Blood Cells", "also_known_as": "RBC, Red Cell Count, Erythrocytes"},
-      {"test": "Hematocrit", "also_known_as": "HCT, PCV, Packed Cell Volume"},
-      {"test": "Mean Corpuscular Volume", "also_known_as": "MCV, Mean Cell Volume"},
-      {"test": "Mean Corpuscular Hemoglobin", "also_known_as": "MCH, Mean Cell Hemoglobin"},
-      {"test": "MCHC", "also_known_as": "Mean Corpuscular Hemoglobin Concentration"},
-      {"test": "Red Cell Distribution Width", "also_known_as": "RDW, RDW-CV"}
+      {
+        "test": "Hemoglobin",
+        "also_known_as": "Hb, HGB, Hgb"
+      },
+      {
+        "test": "White Blood Cells",
+        "also_known_as": "WBC, TLC, Leukocytes, White Cell Count"
+      },
+      {
+        "test": "Platelet Count",
+        "also_known_as": "PLT, Thrombocytes, Platelet"
+      },
+      {
+        "test": "Red Blood Cells",
+        "also_known_as": "RBC, Red Cell Count, Erythrocytes"
+      },
+      {
+        "test": "Hematocrit",
+        "also_known_as": "HCT, PCV, Packed Cell Volume"
+      },
+      {
+        "test": "Mean Corpuscular Volume",
+        "also_known_as": "MCV, Mean Cell Volume"
+      },
+      {
+        "test": "Mean Corpuscular Hemoglobin",
+        "also_known_as": "MCH, Mean Cell Hemoglobin"
+      },
+      {
+        "test": "MCHC",
+        "also_known_as": "Mean Corpuscular Hemoglobin Concentration"
+      },
+      {
+        "test": "Red Cell Distribution Width",
+        "also_known_as": "RDW, RDW-CV"
+      }
     ],
     "tests": [
       {
@@ -92,11 +119,26 @@
     "id": "lft",
     "panel_name": "Liver Function Tests (LFT)",
     "guide": [
-      {"test": "ALT", "also_known_as": "SGPT, Alanine Aminotransferase, Alanine Transaminase"},
-      {"test": "AST", "also_known_as": "SGOT, Aspartate Aminotransferase"},
-      {"test": "Alkaline Phosphatase", "also_known_as": "ALP, Alk Phos"},
-      {"test": "Total Bilirubin", "also_known_as": "T.Bil, Bilirubin Total, TBIL"},
-      {"test": "Albumin", "also_known_as": "Alb, Serum Albumin"}
+      {
+        "test": "ALT",
+        "also_known_as": "SGPT, Alanine Aminotransferase, Alanine Transaminase"
+      },
+      {
+        "test": "AST",
+        "also_known_as": "SGOT, Aspartate Aminotransferase"
+      },
+      {
+        "test": "Alkaline Phosphatase",
+        "also_known_as": "ALP, Alk Phos"
+      },
+      {
+        "test": "Total Bilirubin",
+        "also_known_as": "T.Bil, Bilirubin Total, TBIL"
+      },
+      {
+        "test": "Albumin",
+        "also_known_as": "Alb, Serum Albumin"
+      }
     ],
     "tests": [
       {
@@ -145,11 +187,26 @@
     "id": "rft",
     "panel_name": "Renal Function Tests (RFT)",
     "guide": [
-      {"test": "Blood Urea", "also_known_as": "Urea, BUN, Blood Urea Nitrogen"},
-      {"test": "Serum Creatinine", "also_known_as": "Creatinine, Cr, S.Creatinine"},
-      {"test": "Sodium", "also_known_as": "Na, Na+, Serum Sodium"},
-      {"test": "Potassium", "also_known_as": "K, K+, Serum Potassium"},
-      {"test": "Chloride", "also_known_as": "Cl, Cl-, Serum Chloride"}
+      {
+        "test": "Blood Urea",
+        "also_known_as": "Urea, BUN, Blood Urea Nitrogen"
+      },
+      {
+        "test": "Serum Creatinine",
+        "also_known_as": "Creatinine, Cr, S.Creatinine"
+      },
+      {
+        "test": "Sodium",
+        "also_known_as": "Na, Na+, Serum Sodium"
+      },
+      {
+        "test": "Potassium",
+        "also_known_as": "K, K+, Serum Potassium"
+      },
+      {
+        "test": "Chloride",
+        "also_known_as": "Cl, Cl-, Serum Chloride"
+      }
     ],
     "tests": [
       {
@@ -198,9 +255,18 @@
     "id": "tft",
     "panel_name": "Thyroid Function Tests (TFT)",
     "guide": [
-      {"test": "TSH", "also_known_as": "Thyroid Stimulating Hormone, Thyrotropin"},
-      {"test": "Free T3", "also_known_as": "FT3, Free Triiodothyronine, T3"},
-      {"test": "Free T4", "also_known_as": "FT4, Free Thyroxine, T4"}
+      {
+        "test": "TSH",
+        "also_known_as": "Thyroid Stimulating Hormone, Thyrotropin"
+      },
+      {
+        "test": "Free T3",
+        "also_known_as": "FT3, Free Triiodothyronine, T3"
+      },
+      {
+        "test": "Free T4",
+        "also_known_as": "FT4, Free Thyroxine, T4"
+      }
     ],
     "tests": [
       {
@@ -233,11 +299,26 @@
     "id": "abg",
     "panel_name": "Arterial Blood Gas (ABG)",
     "guide": [
-      {"test": "pH", "also_known_as": "Blood pH, Arterial pH"},
-      {"test": "pCO2", "also_known_as": "PCO2, pCO₂, Partial Pressure of CO2"},
-      {"test": "HCO3", "also_known_as": "HCO₃, Bicarbonate, Bicarb"},
-      {"test": "pO2", "also_known_as": "PO2, pO₂, Partial Pressure of Oxygen"},
-      {"test": "O2 Saturation", "also_known_as": "O2 Sat, SaO2, Oxygen Saturation"}
+      {
+        "test": "pH",
+        "also_known_as": "Blood pH, Arterial pH"
+      },
+      {
+        "test": "pCO2",
+        "also_known_as": "PCO2, pCO₂, Partial Pressure of CO2"
+      },
+      {
+        "test": "HCO3",
+        "also_known_as": "HCO₃, Bicarbonate, Bicarb"
+      },
+      {
+        "test": "pO2",
+        "also_known_as": "PO2, pO₂, Partial Pressure of Oxygen"
+      },
+      {
+        "test": "O2 Saturation",
+        "also_known_as": "O2 Sat, SaO2, Oxygen Saturation"
+      }
     ],
     "tests": [
       {
@@ -286,13 +367,34 @@
     "id": "urine_re",
     "panel_name": "Urine Routine Examination (R/E)",
     "guide": [
-      {"test": "Specific Gravity", "also_known_as": "Sp. Gr, SpGr, S.Gravity"},
-      {"test": "pH", "also_known_as": "Urine pH"},
-      {"test": "Protein", "also_known_as": "Urine Protein, Proteinuria, Albumin"},
-      {"test": "Glucose", "also_known_as": "Urine Glucose, Urine Sugar, Glycosuria"},
-      {"test": "RBCs", "also_known_as": "Red Blood Cells, RBC/HPF"},
-      {"test": "WBCs", "also_known_as": "White Blood Cells, Pus Cells, WBC/HPF"},
-      {"test": "Ketones", "also_known_as": "Urine Ketones, Ketone Bodies"}
+      {
+        "test": "Specific Gravity",
+        "also_known_as": "Sp. Gr, SpGr, S.Gravity"
+      },
+      {
+        "test": "pH",
+        "also_known_as": "Urine pH"
+      },
+      {
+        "test": "Protein",
+        "also_known_as": "Urine Protein, Proteinuria, Albumin"
+      },
+      {
+        "test": "Glucose",
+        "also_known_as": "Urine Glucose, Urine Sugar, Glycosuria"
+      },
+      {
+        "test": "RBCs",
+        "also_known_as": "Red Blood Cells, RBC/HPF"
+      },
+      {
+        "test": "WBCs",
+        "also_known_as": "White Blood Cells, Pus Cells, WBC/HPF"
+      },
+      {
+        "test": "Ketones",
+        "also_known_as": "Urine Ketones, Ketone Bodies"
+      }
     ],
     "tests": [
       {
@@ -422,6 +524,274 @@
         "normal_range": "Few",
         "low_causes": "Normal finding.",
         "high_causes": "A high number of epithelial cells in urine can sometimes indicate contamination of the sample or an underlying issue. Please mention it to your doctor."
+      }
+    ]
+  },
+  {
+    "id": "lipid",
+    "panel_name": "Lipid Profile",
+    "guide": [
+      {
+        "test": "Total Cholesterol",
+        "also_known_as": "Cholesterol, T.Chol, TC"
+      },
+      {
+        "test": "LDL Cholesterol",
+        "also_known_as": "LDL, LDL-C, Bad Cholesterol"
+      },
+      {
+        "test": "HDL Cholesterol",
+        "also_known_as": "HDL, HDL-C, Good Cholesterol"
+      },
+      {
+        "test": "Triglycerides",
+        "also_known_as": "TG, Trig, TRIG, Triacylglycerol"
+      },
+      {
+        "test": "VLDL Cholesterol",
+        "also_known_as": "VLDL, VLDL-C"
+      }
+    ],
+    "tests": [
+      {
+        "id": "total_chol",
+        "name": "Total Cholesterol",
+        "units": "mg/dL",
+        "normal_range": "0-200",
+        "low_causes": "Your total cholesterol is normal or low. This is generally a good sign for heart health.",
+        "high_causes": "Your total cholesterol is high. High cholesterol means fatty deposits can build up in your blood vessels over time, increasing the risk of heart disease and stroke. Please see a doctor who can advise on diet changes or medication."
+      },
+      {
+        "id": "ldl",
+        "name": "LDL Cholesterol",
+        "units": "mg/dL",
+        "normal_range": "0-100",
+        "low_causes": "Your LDL is low or normal. This is good for your heart health.",
+        "high_causes": "Your LDL (bad cholesterol) is high. LDL is the type of cholesterol that clogs arteries and increases the risk of heart attack and stroke. This needs attention — please see a doctor to discuss lifestyle changes and possible treatment."
+      },
+      {
+        "id": "hdl",
+        "name": "HDL Cholesterol",
+        "units": "mg/dL",
+        "normal_range": "Male: 40-60, Female: 50-60",
+        "low_causes": "Your HDL (good cholesterol) is low. HDL helps remove bad cholesterol from your blood vessels. A low level increases the risk of heart disease. Regular exercise and a healthy diet can help raise it. Please speak to your doctor.",
+        "high_causes": "Your HDL is high. HDL is the good cholesterol that protects your heart. A high level is generally a positive sign."
+      },
+      {
+        "id": "trig",
+        "name": "Triglycerides",
+        "units": "mg/dL",
+        "normal_range": "0-150",
+        "low_causes": "Your triglycerides are normal. This is a good sign.",
+        "high_causes": "Your triglycerides are high. Triglycerides are a type of fat in the blood. High levels are often related to a diet high in sugar and refined carbohydrates, or excess alcohol. They increase the risk of heart disease. Please see a doctor and consider dietary changes."
+      },
+      {
+        "id": "vldl",
+        "name": "VLDL Cholesterol",
+        "units": "mg/dL",
+        "normal_range": "2-30",
+        "low_causes": "Your VLDL is normal or low. This is generally fine.",
+        "high_causes": "Your VLDL is high. VLDL carries triglycerides in the blood and high levels contribute to fatty buildup in arteries. Please discuss this with your doctor."
+      }
+    ]
+  },
+  {
+    "id": "diabetes",
+    "panel_name": "Blood Sugar / Diabetes Panel",
+    "guide": [
+      {
+        "test": "Fasting Blood Sugar",
+        "also_known_as": "FBS, Fasting Glucose, FBG, Fasting Blood Glucose"
+      },
+      {
+        "test": "Random Blood Sugar",
+        "also_known_as": "RBS, Random Glucose, RBG, Blood Sugar Random"
+      },
+      {
+        "test": "HbA1c",
+        "also_known_as": "Glycated Hemoglobin, A1c, Hemoglobin A1c, HBA1C"
+      },
+      {
+        "test": "Post Prandial Blood Sugar",
+        "also_known_as": "PPBS, 2hr Post Meal, Post Meal Glucose"
+      }
+    ],
+    "tests": [
+      {
+        "id": "fbs",
+        "name": "Fasting Blood Sugar",
+        "units": "mg/dL",
+        "normal_range": "70-100",
+        "low_causes": "Your fasting blood sugar is low (hypoglycemia). This can cause dizziness, sweating, or feeling faint. If you feel these symptoms eat something sweet immediately and see a doctor.",
+        "high_causes": "Your fasting blood sugar is high. A level above 126 mg/dL on two separate tests usually indicates diabetes. Between 100-125 is called prediabetes. Please see a doctor as soon as possible — diabetes is very manageable when caught early."
+      },
+      {
+        "id": "rbs",
+        "name": "Random Blood Sugar",
+        "units": "mg/dL",
+        "normal_range": "70-140",
+        "low_causes": "Your random blood sugar is low. If you feel dizzy or faint eat something sweet and see a doctor.",
+        "high_causes": "Your random blood sugar is high. A level above 200 mg/dL along with symptoms like excessive thirst or urination can indicate diabetes. Please see a doctor for proper diagnosis."
+      },
+      {
+        "id": "hba1c",
+        "name": "HbA1c",
+        "units": "%",
+        "normal_range": "4.0-5.6",
+        "low_causes": "Your HbA1c is normal. This means your average blood sugar over the past 3 months has been well controlled.",
+        "high_causes": "Your HbA1c is high. This test shows your average blood sugar over the past 3 months. Above 6.5% usually means diabetes. Between 5.7-6.4% is prediabetes. Please see a doctor — the earlier you manage this the better the outcome."
+      },
+      {
+        "id": "ppbs",
+        "name": "Post Prandial Blood Sugar",
+        "units": "mg/dL",
+        "normal_range": "70-140",
+        "low_causes": "Your post meal blood sugar is normal. This is a good sign.",
+        "high_causes": "Your blood sugar is high 2 hours after eating. Normally it should return below 140 mg/dL after a meal. A high reading can be an early sign of diabetes or prediabetes. Please see a doctor."
+      }
+    ]
+  },
+  {
+    "id": "iron",
+    "panel_name": "Iron Studies",
+    "guide": [
+      {
+        "test": "Serum Iron",
+        "also_known_as": "Iron, S.Iron, Fe"
+      },
+      {
+        "test": "Ferritin",
+        "also_known_as": "Serum Ferritin, S.Ferritin"
+      },
+      {
+        "test": "TIBC",
+        "also_known_as": "Total Iron Binding Capacity, Iron Binding Capacity"
+      },
+      {
+        "test": "Transferrin Saturation",
+        "also_known_as": "TSAT, Transferrin Sat, Iron Saturation"
+      }
+    ],
+    "tests": [
+      {
+        "id": "s_iron",
+        "name": "Serum Iron",
+        "units": "µg/dL",
+        "normal_range": "Male: 65-175, Female: 50-170",
+        "low_causes": "Your serum iron is low. This means there is not enough iron circulating in your blood. You may feel tired, weak, or short of breath. Iron deficiency is very common and very treatable. Please see a doctor.",
+        "high_causes": "Your serum iron is high. This can happen with certain conditions affecting how the body stores iron. Please see a doctor for further evaluation."
+      },
+      {
+        "id": "ferritin",
+        "name": "Ferritin",
+        "units": "ng/mL",
+        "normal_range": "Male: 24-336, Female: 11-307",
+        "low_causes": "Your ferritin is low. Ferritin is the stored form of iron in your body. A low level is the earliest sign of iron deficiency, even before anemia develops. You may feel tired or have hair loss. Please see a doctor — iron supplements can help.",
+        "high_causes": "Your ferritin is high. Very high ferritin can sometimes indicate inflammation, liver disease, or a condition where the body stores too much iron. Please see a doctor for further tests."
+      },
+      {
+        "id": "tibc",
+        "name": "TIBC",
+        "units": "µg/dL",
+        "normal_range": "250-370",
+        "low_causes": "Your TIBC is low. This can sometimes indicate inflammation or liver problems. Please mention it to your doctor.",
+        "high_causes": "Your TIBC is high. A high TIBC alongside low iron and low ferritin is a strong indicator of iron deficiency. Please see a doctor."
+      },
+      {
+        "id": "tsat",
+        "name": "Transferrin Saturation",
+        "units": "%",
+        "normal_range": "20-50",
+        "low_causes": "Your transferrin saturation is low. This means your iron stores are running low. Combined with other iron markers this helps confirm iron deficiency. Please see a doctor.",
+        "high_causes": "Your transferrin saturation is high. This can be a sign that the body is storing too much iron. Please see a doctor for further evaluation."
+      }
+    ]
+  },
+  {
+    "id": "vitamins",
+    "panel_name": "Vitamin D & B12",
+    "guide": [
+      {
+        "test": "Vitamin D",
+        "also_known_as": "Vit D, 25-OH Vitamin D, 25-Hydroxyvitamin D, Calcidiol"
+      },
+      {
+        "test": "Vitamin B12",
+        "also_known_as": "B12, Cobalamin, Cyanocobalamin, Vit B12"
+      }
+    ],
+    "tests": [
+      {
+        "id": "vit_d",
+        "name": "Vitamin D",
+        "units": "ng/mL",
+        "normal_range": "30-100",
+        "low_causes": "Your Vitamin D is low. Vitamin D deficiency is extremely common in Pakistan despite the sunny climate because most people avoid direct sun exposure. Low Vitamin D can cause bone pain, muscle weakness, fatigue, and low mood. The good news is it is easily treated with Vitamin D supplements. Please see a doctor for the right dose.",
+        "high_causes": "Your Vitamin D is very high. This is usually caused by taking too many Vitamin D supplements. Very high levels can cause nausea, weakness, and kidney problems. Please stop supplements and see a doctor."
+      },
+      {
+        "id": "vit_b12",
+        "name": "Vitamin B12",
+        "units": "pg/mL",
+        "normal_range": "200-900",
+        "low_causes": "Your Vitamin B12 is low. B12 deficiency can cause extreme fatigue, tingling or numbness in hands and feet, memory problems, and mood changes. It is common in people who eat little meat or dairy. Please see a doctor — B12 injections or supplements work very well.",
+        "high_causes": "Your Vitamin B12 is very high. This can sometimes happen with liver disease or certain blood conditions. Please mention it to your doctor."
+      }
+    ]
+  },
+  {
+    "id": "hepatitis",
+    "panel_name": "Hepatitis Markers",
+    "guide": [
+      {
+        "test": "HBsAg",
+        "also_known_as": "Hepatitis B Surface Antigen, Hep B Antigen, HBs Ag"
+      },
+      {
+        "test": "Anti-HCV",
+        "also_known_as": "Hepatitis C Antibody, HCV Antibody, Anti HCV"
+      },
+      {
+        "test": "Anti-HBs",
+        "also_known_as": "Hepatitis B Surface Antibody, HBs Antibody"
+      },
+      {
+        "test": "HBeAg",
+        "also_known_as": "Hepatitis B e Antigen, Hep B e Ag"
+      }
+    ],
+    "tests": [
+      {
+        "id": "hbsag",
+        "name": "HBsAg",
+        "units": "",
+        "normal_range": "Negative",
+        "low_causes": "HBsAg is negative. This means you do not currently have a Hepatitis B infection. This is a normal result.",
+        "high_causes": "HBsAg is positive. This means Hepatitis B virus is present in your blood. This could be a new or long-standing infection. Please see a doctor as soon as possible — Hepatitis B is manageable with the right treatment and monitoring."
+      },
+      {
+        "id": "anti_hcv",
+        "name": "Anti-HCV",
+        "units": "",
+        "normal_range": "Negative",
+        "low_causes": "Anti-HCV is negative. This means no Hepatitis C antibodies were found. This is a normal result.",
+        "high_causes": "Anti-HCV is positive. This means your body has been exposed to the Hepatitis C virus at some point. Please see a doctor immediately for a confirmatory test. Hepatitis C is now completely curable with modern medicines available in Pakistan."
+      },
+      {
+        "id": "anti_hbs",
+        "name": "Anti-HBs",
+        "units": "mIU/mL",
+        "normal_range": "More than 10",
+        "low_causes": "Your Anti-HBs is low or negative. This means you may not be fully protected against Hepatitis B. If you have not been vaccinated please speak to your doctor about getting the Hepatitis B vaccine.",
+        "high_causes": "Your Anti-HBs is positive. This means you have immunity against Hepatitis B — either from vaccination or a past infection that your body cleared. This is a good result."
+      },
+      {
+        "id": "hbeag",
+        "name": "HBeAg",
+        "units": "",
+        "normal_range": "Negative",
+        "low_causes": "HBeAg is negative. This is a normal finding.",
+        "high_causes": "HBeAg is positive. This marker is checked in people who already have Hepatitis B. A positive result means the virus is actively multiplying and you are more infectious. Please see a liver specialist promptly."
       }
     ]
   }
