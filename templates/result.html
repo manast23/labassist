@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ lab.panel_name }} — LabAssist</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2KEMHHEX3V"></script>
@@ -13,7 +14,62 @@
     gtag('js', new Date());
     gtag('config', 'G-2KEMHHEX3V');
   </script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <style>
+    .guide-section {
+      background: var(--gray-50);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 32px;
+    }
+    .guide-section h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .guide-table th {
+      text-align: left;
+      padding: 8px 12px;
+      background: var(--gray-100);
+      color: var(--gray-600);
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1.5px solid var(--gray-200);
+    }
+    .guide-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--gray-100);
+      color: var(--gray-800);
+      vertical-align: top;
+    }
+    .guide-table tr:last-child td { border-bottom: none; }
+    .guide-table td:first-child { font-weight: 600; color: var(--navy); width: 40%; }
+    .guide-table td:last-child { color: var(--gray-600); }
+    .scroll-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.82rem;
+      color: var(--teal);
+      text-decoration: none;
+      margin-top: 6px;
+      cursor: pointer;
+    }
+    .scroll-hint:hover { text-decoration: underline; }
+    .what-means { font-size: 0.82rem; color: var(--gray-600); margin-top: 4px; }
+  </style>
 </head>
 <body>
   <div class="wrap">
@@ -36,7 +92,12 @@
         <div class="panel-header">
           <div>
             <h2>{{ lab.panel_name }}</h2>
-            <p class="muted" style="margin-top:2px;font-size:0.85rem;">Enter your values below and click Interpret</p>
+            <p class="muted" style="margin-top:2px;font-size:0.85rem;">Enter the values from your report below</p>
+            {% if lab.guide %}
+            <a class="scroll-hint" onclick="document.getElementById('guide').scrollIntoView({behavior:'smooth'})">
+              📋 Not sure which value is which? See the guide below ↓
+            </a>
+            {% endif %}
           </div>
           <span class="badge">{{ lab.id | upper }}</span>
         </div>
@@ -44,7 +105,6 @@
         <form action="{{ url_for('interpret') }}" method="post">
           <input type="hidden" name="lab_id" value="{{ lab.id }}">
 
-          <!-- Age & Gender -->
           <div class="row" style="max-width:420px;">
             <div class="col">
               <label class="label">Age</label>
@@ -60,8 +120,7 @@
             </div>
           </div>
 
-          <!-- Test values -->
-          <div class="section-label" style="margin-top:8px;">Test Values</div>
+          <div class="section-label" style="margin-top:8px;">Enter Your Values</div>
 
           <div class="grid">
             {% for test in lab.tests %}
@@ -77,16 +136,16 @@
 
           <div class="form-actions">
             <button class="btn btn-interpret" type="submit">
-              🔍 Interpret Results
+              🔍 Interpret My Results
             </button>
             <a href="{{ url_for('index') }}" class="btn btn-outline">← Back</a>
           </div>
         </form>
 
-        <!-- Results section -->
+        <!-- Results -->
         {% if interpretations %}
         <div style="margin-top:32px;">
-          <div class="section-label">Interpretation</div>
+          <div class="section-label">What Your Results Mean</div>
 
           <div class="grid-results">
             {% for it in interpretations %}
@@ -106,15 +165,41 @@
 
           {% if summary %}
           <div class="interpretation">
-            <h4>🩺 Clinical Summary</h4>
+            <h4>🩺 Overall Summary</h4>
             <p>{{ summary }}</p>
           </div>
           {% endif %}
 
           <div class="disclaimer" style="margin-top:16px;">
             <span>⚠️</span>
-            <span>This interpretation is for informational purposes only. Please consult a qualified physician before making any medical decisions.</span>
+            <span>This is for general information only and is not a medical diagnosis. Please always consult a qualified doctor before making any health decisions.</span>
           </div>
+        </div>
+        {% endif %}
+
+        <!-- Guide Section -->
+        {% if lab.guide %}
+        <div class="guide-section" id="guide">
+          <h3>📋 How to Find These Values on Your Report</h3>
+          <p style="font-size:0.88rem;color:var(--gray-600);margin-bottom:14px;">
+            Different labs use different names for the same test. Use this table to find the matching value on your report.
+          </p>
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Test Name (on LabAssist)</th>
+                <th>Also written as on your report</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for g in lab.guide %}
+              <tr>
+                <td>{{ g.test }}</td>
+                <td>{{ g.also_known_as }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
         {% endif %}
 
