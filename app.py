@@ -357,7 +357,7 @@ def generate_summary(lab_id, interpretations, age, gender):
             parts.append("Your liver enzyme (ALT) is high which means your liver may be under stress. Common causes include fatty liver, hepatitis, or certain medications. Please see a doctor for further evaluation.")
         if alb and alb["value"] is not None and alb["status"] == "Low":
             parts.append("Your albumin is low. This protein is made by the liver and a low level can be a sign of liver disease or poor nutrition. Please see a doctor.")
-        if tbil and tbil["value"] is not None and tbil["status"] ==="High":
+        if tbil and tbil["value"] is not None and tbil["status"] == "High":
             parts.append("Your bilirubin is high. If your skin or eyes look yellow, please see a doctor urgently. Otherwise please arrange an appointment soon.")
         if not parts:
             return "Your liver function tests look largely normal. No major abnormalities detected. If you have any symptoms or concerns, please speak to your doctor."
