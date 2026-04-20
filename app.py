@@ -68,18 +68,12 @@ def ocr():
 
 
 def extract_by_coordinates(parsed_result, lab):
-    """
-    Uses word-level coordinates to find values in the correct column.
-    Lab reports are tables — test name on left, value in middle, range on right.
-    We find words in the value column x-range and match them to test rows.
-    """
     extracted = {}
     try:
         lines_data = parsed_result.get("TextOverlay", {}).get("Lines", [])
         if not lines_data:
             return extracted
 
-        # Collect all words with positions
         all_words = []
         for line in lines_data:
             for w in line.get("Words", []):
@@ -93,14 +87,10 @@ def extract_by_coordinates(parsed_result, lab):
         if not all_words:
             return extracted
 
-        # Find image width estimate
         max_right = max(w["left"] + w["width"] for w in all_words)
-
-        # Value column is typically 20-50% from left edge
         val_col_min = max_right * 0.18
         val_col_max = max_right * 0.52
 
-        # Build alias map
         aliases = {}
         for test in lab["tests"]:
             tid = test["id"]
@@ -112,7 +102,6 @@ def extract_by_coordinates(parsed_result, lab):
             if len(wlist) > 1:
                 aliases[normalize("".join(w[0] for w in wlist))] = tid
 
-        # Group words by row (similar top coordinate = same row)
         lines_data2 = parsed_result.get("TextOverlay", {}).get("Lines", [])
         for line in lines_data2:
             words = line.get("Words", [])
@@ -121,7 +110,6 @@ def extract_by_coordinates(parsed_result, lab):
             line_text = " ".join(w["WordText"] for w in words)
             line_norm = normalize(line_text)
 
-            # Find which test this line is about
             matched_tid = None
             for alias in sorted(aliases.keys(), key=len, reverse=True):
                 if alias in line_norm:
@@ -130,7 +118,6 @@ def extract_by_coordinates(parsed_result, lab):
             if not matched_tid or matched_tid in extracted:
                 continue
 
-            # Find a number in the value column x-range
             for w in words:
                 left = w["Left"]
                 if val_col_min <= left <= val_col_max:
@@ -187,7 +174,6 @@ EXTRA_ALIASES = {
 
 
 def extract_values(text, lab):
-    """Fallback text-based extraction."""
     extracted = {}
     lines = text.replace("\r", "\n").split("\n")
     aliases = {}
@@ -371,7 +357,7 @@ def generate_summary(lab_id, interpretations, age, gender):
             parts.append("Your liver enzyme (ALT) is high which means your liver may be under stress. Common causes include fatty liver, hepatitis, or certain medications. Please see a doctor for further evaluation.")
         if alb and alb["value"] is not None and alb["status"] == "Low":
             parts.append("Your albumin is low. This protein is made by the liver and a low level can be a sign of liver disease or poor nutrition. Please see a doctor.")
-        if tbil and tbil["value"] is not None and tbil["status"] == "High":
+        if tbil and tbil["value"] is not None and tbil["status"] ==="High":
             parts.append("Your bilirubin is high. If your skin or eyes look yellow, please see a doctor urgently. Otherwise please arrange an appointment soon.")
         if not parts:
             return "Your liver function tests look largely normal. No major abnormalities detected. If you have any symptoms or concerns, please speak to your doctor."
@@ -409,7 +395,6 @@ def generate_summary(lab_id, interpretations, age, gender):
                 return "Your results suggest your blood is too alkaline due to a metabolic cause. This can happen with prolonged vomiting or certain medications. Please see a doctor."
             return "Your blood appears to be more alkaline than normal. Please see a doctor."
         return "Your blood gas values appear to be within a normal range. No major acid-base disturbance detected."
-
 
     if lab_id == "lipid":
         ldl   = next((i for i in interpretations if i["id"] == "ldl"), None)
@@ -499,7 +484,7 @@ def sitemap():
     xml = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://labassist-75wq.onrender.com/</loc>
+    <loc>https://labassist.online/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -511,7 +496,7 @@ def robots():
     from flask import Response
     txt = """User-agent: *
 Allow: /
-Sitemap: https://labassist-75wq.onrender.com/sitemap.xml"""
+Sitemap: https://labassist.online/sitemap.xml"""
     return Response(txt, mimetype="text/plain")
 
 if __name__ == "__main__":
